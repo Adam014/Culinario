@@ -8,8 +8,6 @@ import { auth } from './firebase/firebase';
 function App() {
   const [authUser, setAuthUser] = useState(null);
 
-  console.log(authUser)
-
   const userSignOut = () => {
         signOut(auth)
         .then(() => {
