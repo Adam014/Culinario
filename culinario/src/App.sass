@@ -6,18 +6,71 @@
     box-sizing: border-box
 
 $bgColor: #1A1A21
+$formBg: #2B2B36
 $white : #ffff
+$gold : #F18706
 
 body    
-    height: 110vh
+    height: 100vh
     background-color: $bgColor
     color: $white
     font-family: 'Comfortaa', cursive
 
-.form-title
-    font-family: 'Merienda', cursive
-    font-size: 3rem
-
 .container
+    height: 100%
     display: grid
     justify-content: center
+    align-items: center
+
+#root
+    height: 100%
+
+.form
+    width: 30rem
+    height: 30rem
+    background-color: #2B2B36
+    border-radius: 25px
+    display: grid
+    justify-content: center
+
+    .form-title
+        font-family: 'Merienda', cursive
+        font-size: 3rem
+        padding-top: 40px 
+        text-align: center
+
+    .login-title, .signup-title
+        padding-bottom: 10px
+        font-size: 1.8rem
+
+    .form-container
+
+        display: flex
+        justify-content: center
+
+.login-container, .signup-container
+    form
+        label
+            display: block
+            input
+                width: 15rem
+                height: 2rem
+                border-radius: 5px
+                border: 0
+                outline: 0
+                text-indent: 10px
+        button      
+            background-color: $gold
+            border: 0
+            color: $white
+            width: 100% 
+            height: 2.5rem
+            border-radius: 15px
+            margin-top: 20px
+            cursor: pointer
+
+
+.here-link
+    color: $gold
+    text-decoration: underline
+    cursor: pointer

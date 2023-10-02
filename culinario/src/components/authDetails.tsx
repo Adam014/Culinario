@@ -36,24 +36,20 @@ const authDetails = () => {
     };
 
   return (
-        <section>
-            <div className='container'>
-                <h1 className='form-title'>Culinario</h1>
-                <div className='form-container'>
-                    {showSignUp ? <SignUp /> : <Login />}
-                </div>
-                <p>
-                    {authUser ? "Already have an account? " : "Don't have an account? "}
-                    {authUser ? (
-                        <>Log in to your account <span onClick={toggleForm} className="here-link">here</span></>
-                    ) : (
-                        <>Create one <span onClick={toggleForm} className="here-link">here</span></>
-                    )}
-                </p>
+   <div className='container'>
+        <div className='form'>
+            <h1 className='form-title'>Culinario</h1>
+            <div className='form-container'>
+                {showSignUp ? <SignUp /> : <Login />}
             </div>
-            {authUser ? <p>{`Signed In as ${authUser.email}`}</p> : <p>Logged out</p>}
-            {authUser && <button onClick={userSignOut}>Sign Out</button>}
-        </section>
+            <p>
+                {showSignUp ? "Already have an account? " : "Don't have an account? "}
+                <span onClick={toggleForm} className="here-link">
+                    {showSignUp ? "Login here" : "Create one here"}
+                </span>
+            </p>
+        </div>
+    </div>
   )
 }
 
