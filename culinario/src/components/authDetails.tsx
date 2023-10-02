@@ -1,35 +1,24 @@
 import { useEffect, useState } from 'react';
 import { auth } from '../firebase/firebase';
-import { onAuthStateChanged, signOut } from 'firebase/auth';
+import { onAuthStateChanged } from 'firebase/auth';
 import Login from './auth/login';
 import SignUp from './auth/signUp';
 
-const authDetails = () => {
-
-    const [authUser, setAuthUser] = useState(null);
+const authDetails = ({ authUser }) => {
     const [showSignUp, setShowSignUp] = useState(false);
 
     useEffect(() => {
         const listen = onAuthStateChanged(auth, (user) => {
             if (user){
-                setAuthUser(user);
+                authUser(user);
             } else {
-                setAuthUser(null);
+                authUser(null);
             }
         })
         return () => {
             listen();
         }
     }, []);
-
-
-    const userSignOut = () => {
-        signOut(auth)
-        .then(() => {
-            console.log("Successfully signed out!")
-        })
-        .catch((error) => console.log(error))
-    }
 
     const toggleForm = () => {
         setShowSignUp(!showSignUp);
@@ -49,8 +38,9 @@ const authDetails = () => {
                 </span>
             </p>
         </div>
+        <p>Created by Adam Stádník | Copyright 2023 All rights reserved. </p>
     </div>
   )
 }
 
-export default authDetails
+export default authDetails;
