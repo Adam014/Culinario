@@ -21,7 +21,7 @@ function App() {
   return (
     <>
       {authUser ? <MainPage /> : <AuthDetails setAuthUser={setAuthUser} />}
-      <button onClick={userSignOut}>Logout</button>
+      {authUser && <button onClick={userSignOut}>Logout</button>}
     </>
   )
 }

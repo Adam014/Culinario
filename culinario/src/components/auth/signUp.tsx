@@ -1,11 +1,14 @@
 import { useState } from "react";
 import { auth } from "../../firebase/firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
+import openEye from "../../images/opened-eye.png";
+import closedEye from "../../images/closed-eye.png";
 
 const SignUp = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState<string | null>(null);
+    const [showPassword, setShowPassword] = useState(false);
 
     const signUpWithEmailAndPassword = (e: React.FormEvent) => {
         e.preventDefault();
@@ -19,6 +22,10 @@ const SignUp = () => {
         });
     };
 
+    const togglePasswordVisibility = () => {
+        setShowPassword((prevShowPassword) => !prevShowPassword);
+    };
+
     return (
         <div className="signup-container">
             <h1 className="signup-title">Sign Up</h1>
@@ -29,7 +36,21 @@ const SignUp = () => {
                 </label><br />
                 <label>
                     Password<br />
-                    <input type="password" placeholder="Enter your password" value={password}onChange={(e) => setPassword(e.target.value)}  autoComplete="on" required/>
+                    <div className="password-input">
+                        <input 
+                            type="password" 
+                            placeholder="Enter your password" 
+                            value={password}onChange={(e) => setPassword(e.target.value)}  
+                            autoComplete="on" 
+                            required    
+                        />
+                        <img
+                            className="password-visibility"
+                            src={showPassword ? openEye : closedEye}
+                            alt="Toggle password visibility"
+                            onClick={togglePasswordVisibility}
+                        />
+                    </div>
                 </label><br />
                 <button>Sign Up</button>
             </form>

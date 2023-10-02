@@ -39,7 +39,7 @@ body
         padding-top: 40px 
         text-align: center
 
-    img
+    .title-underline
         display: flex
         justify-content: center
         width: 15rem
@@ -85,7 +85,7 @@ body
 
 .error-message
     color: red
-    padding: 10px
+    padding-top: 20px
     text-align: center
 
 .image-container
@@ -95,3 +95,18 @@ body
 
 .account-container
     text-align: center
+
+.password-visibility
+    position: absolute
+    right: 10px
+    top: 50% 
+    transform: translateY(-50%)
+    cursor: pointer
+    height: 25px
+
+input[type="password"]
+    flex: 1
+    padding: 8px
+
+.password-input 
+    position: relative

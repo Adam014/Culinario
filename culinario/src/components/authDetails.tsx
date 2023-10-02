@@ -36,7 +36,7 @@ const authDetails: React.FC<AuthDetailsProps> = ({ setAuthUser }) => {
             <div className='title-container'>
                 <h1 className='form-title'>Culinario</h1>
                 <div className='image-container'>
-                    <img src={titleUnderline} alt='tile-underline-image'/>
+                    <img className='title-underline' src={titleUnderline} alt='tile-underline-image'/>
                 </div>
             </div>
             <div className='form-container'>
