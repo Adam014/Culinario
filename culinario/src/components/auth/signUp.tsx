@@ -5,6 +5,7 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 const SignUp = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [error, setError] = useState<string | null>(null);
 
     const signUpWithEmailAndPassword = (e: React.FormEvent) => {
         e.preventDefault();
@@ -14,6 +15,7 @@ const SignUp = () => {
         })
         .catch((error) => {
             console.log(error)
+            setError(error.message);
         });
     };
 
@@ -23,14 +25,17 @@ const SignUp = () => {
             <form onSubmit={signUpWithEmailAndPassword}>
                 <label>
                     Email<br />
-                    <input type="email" placeholder="Enter your email" value={email} autoComplete="on" onChange={(e) => setEmail(e.target.value)} />
+                    <input type="email" placeholder="Enter your email" value={email} autoComplete="on" onChange={(e) => setEmail(e.target.value)} required/>
                 </label><br />
                 <label>
                     Password<br />
-                    <input type="password" placeholder="Enter your password" value={password}onChange={(e) => setPassword(e.target.value)}  autoComplete="on"/>
+                    <input type="password" placeholder="Enter your password" value={password}onChange={(e) => setPassword(e.target.value)}  autoComplete="on" required/>
                 </label><br />
                 <button>Sign Up</button>
             </form>
+            <div className="error-container">
+                {error && <p className="error-message">{error}</p>}
+            </div>
         </div>
     )
 }

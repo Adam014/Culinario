@@ -27,7 +27,7 @@ body
 
 .form
     width: 30rem
-    height: 30rem
+    height: 35rem
     background-color: #2B2B36
     border-radius: 25px
     display: grid
@@ -39,9 +39,15 @@ body
         padding-top: 40px 
         text-align: center
 
+    img
+        display: flex
+        justify-content: center
+        width: 15rem
+
     .login-title, .signup-title
         padding-bottom: 10px
         font-size: 1.8rem
+        text-align: center
 
     .form-container
 
@@ -50,6 +56,8 @@ body
 
 .login-container, .signup-container
     form
+        display: grid
+        justify-content: center
         label
             display: block
             input
@@ -74,3 +82,16 @@ body
     color: $gold
     text-decoration: underline
     cursor: pointer
+
+.error-message
+    color: red
+    padding: 10px
+    text-align: center
+
+.image-container
+    display: flex
+    justify-content: center
+    width: 100%
+
+.account-container
+    text-align: center

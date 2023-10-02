@@ -4,9 +4,10 @@ import AuthDetails from './components/authDetails'
 import MainPage from "./components/mainPage";
 import { signOut } from 'firebase/auth';
 import { auth } from './firebase/firebase';
+import { User } from 'firebase/auth';
 
 function App() {
-  const [authUser, setAuthUser] = useState(null);
+  const [authUser, setAuthUser] = useState<User | null>(null);
 
   const userSignOut = () => {
         signOut(auth)
@@ -15,10 +16,11 @@ function App() {
             setAuthUser(null)
         })
         .catch((error) => console.log(error))
-    }
+  }
+
   return (
     <>
-      {authUser ? <MainPage /> : <AuthDetails authUser={(user) => setAuthUser(user)}/>}
+      {authUser ? <MainPage /> : <AuthDetails setAuthUser={setAuthUser} />}
       <button onClick={userSignOut}>Logout</button>
     </>
   )
