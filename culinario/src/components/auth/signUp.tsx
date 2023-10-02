@@ -18,16 +18,19 @@ const SignUp = () => {
     };
 
     return (
-        <section>
-            <div className="login-container">
-                <form onSubmit={signUpWithEmailAndPassword}>
-                    <h1>Sign Up</h1>
+        <div className="signup-container">
+            <form onSubmit={signUpWithEmailAndPassword}>
+                <label>
+                    Email
                     <input type="email" placeholder="Enter your email" value={email} autoComplete="on" onChange={(e) => setEmail(e.target.value)} />
+                </label>
+                <label>
+                    Password
                     <input type="password" placeholder="Enter your password" value={password}onChange={(e) => setPassword(e.target.value)}  autoComplete="on"/>
-                    <button>Sign Up</button>
-                </form>
-            </div>
-        </section>
+                </label>
+                <button>Sign Up</button>
+            </form>
+        </div>
     )
 }
 
