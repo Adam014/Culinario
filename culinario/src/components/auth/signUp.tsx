@@ -6,7 +6,7 @@ const SignUp = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const signUpWithEmailAndPassword = (e: React.FormEvent<HTMLFormElement>) => {
+    const signUpWithEmailAndPassword = (e: React.FormEvent) => {
         e.preventDefault();
         createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {

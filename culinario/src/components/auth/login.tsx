@@ -6,7 +6,7 @@ const login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const loginWithEmailAndPassword = (e: React.FormEvent<HTMLFormElement>) => {
+    const loginWithEmailAndPassword = (e: React.FormEvent) => {
         e.preventDefault();
         signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
