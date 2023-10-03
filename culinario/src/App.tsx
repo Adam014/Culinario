@@ -1,10 +1,10 @@
 import { useState } from "react"
 import './App.sass'
 import AuthDetails from './components/authDetails'
-import Main from "./components/main";
 import { signOut, User } from 'firebase/auth';
 import { auth } from './firebase/firebase';
 import { BrowserRouter as Router} from "react-router-dom";
+import Main from "./components/mainBlog";
 import Navbar from "./components/navbar";
 import Sidebar from "./components/sidebar";
 
@@ -23,8 +23,8 @@ function App() {
   return (
     <Router>
       <div className={authUser ? "recipes-page-container" : "container"}>
-        {authUser &&<Navbar />  }
-        {authUser ? <Main /> : <AuthDetails setAuthUser={setAuthUser} />}
+        {authUser &&<Navbar authUser={authUser}/>  }
+        {authUser ? <Main authUser={authUser}/> : <AuthDetails setAuthUser={setAuthUser} />}
         {authUser && <Sidebar />}
         {authUser && <button onClick={userSignOut}>Logout</button>}
       </div>

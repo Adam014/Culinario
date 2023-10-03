@@ -1,6 +1,12 @@
 import { CulinarioLogo, ProfileIcon, Search } from "../images/images";
+import { User } from "firebase/auth";
 
-const navbar = () => {
+interface NavbarProps {
+  authUser: User | null; // Define the type for authUser
+}
+
+const navbar = ({ authUser } : NavbarProps) => {
+
   return (
     <nav className="navbar">
         <img src={CulinarioLogo} alt="culinario-navbar-logo"/>
@@ -12,7 +18,7 @@ const navbar = () => {
         </div>  
         <div className="profile-container">
           <img src={ProfileIcon} alt="profile-user-icon"/>
-          <p>$username</p>  
+          <p>{authUser?.email}</p>  
         </div>  
     </nav>
   )
