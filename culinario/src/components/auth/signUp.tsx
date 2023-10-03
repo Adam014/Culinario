@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { auth } from "../../firebase/firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import openEye from "../../images/opened-eye.png";
-import closedEye from "../../images/closed-eye.png";
+import { OpenEye, ClosedEye } from "../../images/images";
 
 const SignUp = () => {
     const [email, setEmail] = useState('');
@@ -46,7 +45,7 @@ const SignUp = () => {
                         />
                         <img
                             className="password-visibility"
-                            src={showPassword ? openEye : closedEye}
+                            src={showPassword ? OpenEye : ClosedEye}
                             alt="Toggle password visibility"
                             onClick={togglePasswordVisibility}
                         />

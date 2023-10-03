@@ -117,3 +117,80 @@ input[type="password"]
     padding-top: 35px
     img 
         height: 10rem
+
+// Recipes main page
+
+.recipes-page-container
+    display: grid
+    height: 100%
+    grid-template-rows: 0.3fr 1fr 1fr
+    gap: 0px 0px
+    grid-template-areas: 'navbar navbar navbar' 'aside main main' 'aside main main'
+                        
+
+.navbar
+    display: flex
+    padding: 20px
+    justify-content: space-between
+    background-color: $formBg
+    align-items: center
+    grid-area: navbar
+    height: 8rem
+    img
+        height: 5rem
+
+.search-box
+    width: 30rem
+    padding: 10px
+    display: flex
+    align-items: center
+    height: 50px
+    border-bottom: 1px solid $white
+
+.search-box 
+    input
+        flex: 1
+        border: 0
+        outline: 0
+        background: transparent
+        font-size: 20px
+        color: $white
+
+.search-box 
+    button 
+        img
+            height: 25px
+
+.search-box 
+    button
+        padding: 10px 12px
+        border: 0
+        outline: 0
+        background: transparent
+        cursor: pointer
+
+.main
+    grid-area: main
+
+.aside
+    grid-area: aside
+    background-color: $formBg
+    width: 70%
+
+    .aside-container
+        justify-content: center
+        display: grid
+        
+        h4
+            padding: 40px 0px 20px 0
+            font-size: 1.4rem
+            opacity: 0.7
+
+        .home-container, .favorite-container, .recipes-container
+            padding: 10px
+            display: flex   
+            align-items: center
+            font-size: 1.4rem
+            cursor: pointer
+            h6  
+                padding: 5px 0px 0px 20px

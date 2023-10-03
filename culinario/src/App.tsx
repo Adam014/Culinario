@@ -1,10 +1,9 @@
 import { useState } from "react"
 import './App.sass'
 import AuthDetails from './components/authDetails'
-import MainPage from "./components/mainPage";
-import { signOut } from 'firebase/auth';
+import RecipesPage from "./components/recipesPage";
+import { signOut, User } from 'firebase/auth';
 import { auth } from './firebase/firebase';
-import { User } from 'firebase/auth';
 
 function App() {
   const [authUser, setAuthUser] = useState<User | null>(null);
@@ -20,7 +19,7 @@ function App() {
 
   return (
     <>
-      {authUser ? <MainPage /> : <AuthDetails setAuthUser={setAuthUser} />}
+      {authUser ? <RecipesPage /> : <AuthDetails setAuthUser={setAuthUser} />}
       {authUser && <button onClick={userSignOut}>Logout</button>}
     </>
   )

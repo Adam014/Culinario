@@ -4,8 +4,7 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { User } from 'firebase/auth'; 
 import Login from './auth/login';
 import SignUp from './auth/signUp';
-import titleUnderline from "../images/underline.png";
-import culinarioLogo from "../images/culinario-logo.png";
+import CulinarioLogo from "../images/culinario-logo.png";
 
 interface AuthDetailsProps {
   setAuthUser: React.Dispatch<React.SetStateAction<User | null>>;
@@ -35,7 +34,7 @@ const authDetails: React.FC<AuthDetailsProps> = ({ setAuthUser }) => {
    <div className='container'>
         <div className='form'>
             <div className='title-container'>
-                <img src={culinarioLogo}  alt='culinario-logo'/>
+                <img src={CulinarioLogo}  alt='culinario-logo'/>
             </div>
             <div className='form-container'>
                 {showSignUp ? <SignUp /> : <Login />}
