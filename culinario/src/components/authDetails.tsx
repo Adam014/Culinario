@@ -4,7 +4,8 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { User } from 'firebase/auth'; 
 import Login from './auth/login';
 import SignUp from './auth/signUp';
-import titleUnderline from "../images/underline.png"
+import titleUnderline from "../images/underline.png";
+import culinarioLogo from "../images/culinario-logo.png";
 
 interface AuthDetailsProps {
   setAuthUser: React.Dispatch<React.SetStateAction<User | null>>;
@@ -34,16 +35,13 @@ const authDetails: React.FC<AuthDetailsProps> = ({ setAuthUser }) => {
    <div className='container'>
         <div className='form'>
             <div className='title-container'>
-                <h1 className='form-title'>Culinario</h1>
-                <div className='image-container'>
-                    <img className='title-underline' src={titleUnderline} alt='tile-underline-image'/>
-                </div>
+                <img src={culinarioLogo}  alt='culinario-logo'/>
             </div>
             <div className='form-container'>
                 {showSignUp ? <SignUp /> : <Login />}
             </div>
             <p className='account-container'>
-                {showSignUp ? "Already have an account? " : "Don't have an account? "}
+                {showSignUp ? "Already have an account? Login" : "Don't have an account? "}
                 <span onClick={toggleForm} className="here-link">
                     {showSignUp ? "Login here" : "Create one here"}
                 </span>
