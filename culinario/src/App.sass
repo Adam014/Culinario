@@ -124,6 +124,7 @@ input[type="password"]
     display: grid
     height: 100%
     grid-template-rows: 0.3fr 1fr 1fr
+    grid-template-columns: 0.5fr 1fr 1fr
     gap: 0px 0px
     grid-template-areas: 'navbar navbar navbar' 'aside main main' 'aside main main'
                         
@@ -175,7 +176,6 @@ input[type="password"]
 .aside
     grid-area: aside
     background-color: $formBg
-    width: 70%
 
     .aside-container
         justify-content: center
@@ -192,5 +192,15 @@ input[type="password"]
             align-items: center
             font-size: 1.4rem
             cursor: pointer
+            width: 13rem
+            transition: 0.2s ease-in-out
             h6  
                 padding: 5px 0px 0px 20px
+
+        .home-container-active, .favorite-container-active, .recipes-container-active
+            @extend .home-container, .favorite-container, .recipes-container
+            background-color: $gold
+            h6  
+                padding: 5px 0px 0px 20px
+
+        
