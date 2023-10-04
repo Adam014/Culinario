@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
-import { auth, signInWithGoogle } from '../firebase/firebase';
+import { auth, signInWithGoogle, signInWithGithub } from '../firebase/firebase';
 import { onAuthStateChanged } from 'firebase/auth';
 import { User } from 'firebase/auth'; 
 import Login from './auth/login';
 import SignUp from './auth/signUp';
-import {CulinarioLogo, Google} from "../images/images";
+import {CulinarioLogo, Google, GitHub} from "../images/images";
 
 interface AuthDetailsProps {
   setAuthUser: React.Dispatch<React.SetStateAction<User | null>>;
@@ -50,9 +50,14 @@ const authDetails: React.FC<AuthDetailsProps> = ({ setAuthUser }) => {
         </div>
         <div className='other-login-options'> 
             <h3>{showSignUp ? "Sign up with other providers" : "Login with other providers"}</h3>
-            <button onClick={signInWithGoogle} className='button-google'>
-                <img src={Google} alt="google-login-icon" />    
-            </button>
+            <div className='providers'>
+                <button onClick={signInWithGoogle} className='button-google'>
+                    <img src={Google} alt="google-login-icon" />    
+                </button>
+                <button onClick={signInWithGithub} className='button-github'>
+                    <img src={GitHub} alt='github-login-icon'/>
+                </button>
+            </div>
         </div>
         <div className='footer-container'>
             <p>Created by Adam Stádník | MIT License | Copyright (c) {currentYear} Adam Stádník </p>
