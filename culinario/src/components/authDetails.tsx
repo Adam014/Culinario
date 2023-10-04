@@ -67,6 +67,7 @@ const authDetails: React.FC<AuthDetailsProps> = ({ setAuthUser }) => {
                     {showSignUp ? "Login here" : "Create one here"}
                 </span>
             </p>
+            { /* add reset button */ }
             {/* <p className='reset-password' onClick={handleReset}>Reset password</p> */}
         </div>
         <div className='other-login-options'> 
@@ -78,6 +79,9 @@ const authDetails: React.FC<AuthDetailsProps> = ({ setAuthUser }) => {
                 <button onClick={signInWithGithub} className='button-github'>
                     <img src={GitHub} alt='github-login-icon'/>
                 </button>
+                <div className="error-container">
+                    {error && <p className="error-message">{error}</p>}
+                </div>
             </div>
         </div>
         <div className='footer-container'>

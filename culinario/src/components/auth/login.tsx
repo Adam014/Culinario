@@ -12,8 +12,7 @@ const login = () => {
     const loginWithEmailAndPassword = (e: React.FormEvent) => {
         e.preventDefault();
         signInWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-            console.log(userCredential)
+        .then(() => {
         })
         .catch((error) => {
             console.log(error)
