@@ -46,6 +46,7 @@ const authDetails: React.FC<AuthDetailsProps> = ({ setAuthUser }) => {
                     {showSignUp ? "Login here" : "Create one here"}
                 </span>
             </p>
+            {/* <p className='reset-password' onClick={handleReset}>Reset password</p> */}
         </div>
         <div className='other-login-options'> 
             <h3>{showSignUp ? "Sign up with other providers" : "Login with other providers"}</h3>
