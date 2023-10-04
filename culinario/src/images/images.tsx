@@ -6,6 +6,7 @@ import Search from "./search.png";
 import Home from "./home.png";
 import Heart from "./heart.png";
 import Recipes from "./recipes.png";
+import Google from "./google.png";
 
 export {
     CulinarioLogo,
@@ -16,4 +17,5 @@ export {
     Home,
     Heart,
     Recipes,
+    Google,
 };

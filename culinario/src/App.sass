@@ -31,7 +31,8 @@ body
 .form
     height: 35rem
     background-color: #2B2B36
-    border-radius: 25px
+    border-top-left-radius: 25px
+    border-top-right-radius: 25px
     display: grid
 
     .title-underline
@@ -114,9 +115,25 @@ input[type="password"]
         height: 10rem
 
 .other-login-options
-    border-radius: 25px
+    border-bottom-left-radius: 25px
+    border-bottom-right-radius: 25px
     height: 8rem
     background-color: $formBg
+    display: grid
+    justify-content: center
+
+    h3  
+        padding-top: 20px
+
+    button
+        background: transparent
+        border: 0
+        cursor: pointer
+        margin-top: -20%
+        img
+            transition: 0.3s ease
+            &:hover
+                transform: translateY(-5px)
 
 // Title page
 

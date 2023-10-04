@@ -4,7 +4,7 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { User } from 'firebase/auth'; 
 import Login from './auth/login';
 import SignUp from './auth/signUp';
-import CulinarioLogo from "../images/culinario-logo.png";
+import {CulinarioLogo, Google} from "../images/images";
 
 interface AuthDetailsProps {
   setAuthUser: React.Dispatch<React.SetStateAction<User | null>>;
@@ -41,14 +41,17 @@ const authDetails: React.FC<AuthDetailsProps> = ({ setAuthUser }) => {
                 {showSignUp ? <SignUp /> : <Login />}
             </div>
             <p className='account-container'>
-                {showSignUp ? "Already have an account? Login" : "Don't have an account? "}
+                {showSignUp ? "Already have an account? " : "Don't have an account? "}
                 <span onClick={toggleForm} className="here-link">
                     {showSignUp ? "Login here" : "Create one here"}
                 </span>
             </p>
         </div>
-        <div className='other-login-options'>
-            <button onClick={signInWithGoogle}>Sign In with Google</button>
+        <div className='other-login-options'> 
+            <h3>{showSignUp ? "Sign up with other providers" : "Login with other providers"}</h3>
+            <button onClick={signInWithGoogle} className='button-google'>
+                <img src={Google} alt="google-login-icon" />    
+            </button>
         </div>
         <div className='footer-container'>
             <p>Created by Adam Stádník | MIT License | Copyright (c) {currentYear} Adam Stádník </p>
