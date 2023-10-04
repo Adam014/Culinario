@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { auth, signInWithGoogle, signInWithGithub } from '../firebase/firebase';
-import { onAuthStateChanged } from 'firebase/auth';
+import { auth, providerGitHub, providerGoogle } from '../firebase/firebase';
+import { onAuthStateChanged, signInWithPopup } from 'firebase/auth';
 import { User } from 'firebase/auth'; 
 import Login from './auth/login';
 import SignUp from './auth/signUp';
@@ -13,6 +13,7 @@ interface AuthDetailsProps {
 const authDetails: React.FC<AuthDetailsProps> = ({ setAuthUser }) => {
     const [showSignUp, setShowSignUp] = useState(false);
     const currentYear = new Date().getFullYear()
+    const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
         const listen = onAuthStateChanged(auth, (user) => {
@@ -29,6 +30,26 @@ const authDetails: React.FC<AuthDetailsProps> = ({ setAuthUser }) => {
 
     const toggleForm = () => {
         setShowSignUp(!showSignUp);
+    };
+
+    const signInWithGithub = () => {
+        signInWithPopup(auth, providerGitHub)
+        .then(() => {
+
+        }).catch((error) => {
+            console.log(error)
+            setError(error)
+        });
+    };
+
+    const signInWithGoogle = () => {
+        signInWithPopup(auth, providerGoogle)
+        .then(() => {
+
+        }).catch((error) => {
+            console.log(error)
+            setError(error)
+        });
     };
 
   return (
