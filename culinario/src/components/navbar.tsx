@@ -1,5 +1,5 @@
 import { CulinarioLogo, ProfileIcon, Search } from "../images/images";
-import { User } from "firebase/auth";
+import { User } from "firebase/auth"
 
 interface NavbarProps {
   authUser: User | null; // Define the type for authUser
@@ -7,6 +7,8 @@ interface NavbarProps {
 
 const navbar = ({ authUser } : NavbarProps) => {
 
+  console.log(authUser)
+  console.log(authUser?.providerData)
   return (
     <nav className="navbar">
         <img src={CulinarioLogo} alt="culinario-navbar-logo"/>
@@ -17,7 +19,7 @@ const navbar = ({ authUser } : NavbarProps) => {
           </form>
         </div>  
         <div className="profile-container">
-          <img src={ProfileIcon} alt="profile-user-icon"/>
+          {authUser?.providerData && authUser?.providerData.length > 0 && authUser?.providerData[0].providerId === "google.com" ? <img src={authUser?.photoURL} alt="profile-user-icon"/> : <img src={ProfileIcon} alt="profile-user-icon"/>}
           <p>{authUser?.email}</p>  
         </div>  
     </nav>

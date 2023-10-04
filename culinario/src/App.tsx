@@ -20,8 +20,6 @@ function App() {
         .catch((error) => console.log(error))
   }
 
-  console.log(authUser)
-
   return (
     <Router>
       <div className={authUser ? "recipes-page-container" : "container"}>

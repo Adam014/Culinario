@@ -18,26 +18,21 @@ body
 
 .container
     height: 100%
+
+.login-signup-container
+    height: 100%
     display: grid
-    justify-content: center
+    justify-content:  center
     align-items: center
 
 #root
     height: 100%
 
 .form
-    width: 30rem
     height: 35rem
     background-color: #2B2B36
     border-radius: 25px
     display: grid
-    justify-content: center
-
-    .form-title
-        font-family: 'Merienda', cursive
-        font-size: 3rem
-        padding-top: 40px 
-        text-align: center
 
     .title-underline
         display: flex
@@ -46,7 +41,7 @@ body
 
     .login-title, .signup-title
         padding-bottom: 10px
-        font-size: 1.8rem
+        font-size: 2.2rem
         text-align: center
 
     .form-container
@@ -61,7 +56,7 @@ body
         label
             display: block
             input
-                width: 15rem
+                width: 22rem
                 height: 2rem
                 border-radius: 5px
                 border: 0
@@ -117,6 +112,11 @@ input[type="password"]
     padding-top: 35px
     img 
         height: 10rem
+
+.other-login-options
+    border-radius: 25px
+    height: 8rem
+    background-color: $formBg
 
 // Title page
 
@@ -200,7 +200,7 @@ input[type="password"]
             align-items: center
             font-size: 1.4rem
             cursor: pointer
-            width: 19rem
+            width: 21rem
             transition: 0.2s ease-in-out
             h6  
                 padding: 5px 0px 0px 20px

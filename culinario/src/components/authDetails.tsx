@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { auth } from '../firebase/firebase';
+import { auth, signInWithGoogle } from '../firebase/firebase';
 import { onAuthStateChanged } from 'firebase/auth';
 import { User } from 'firebase/auth'; 
 import Login from './auth/login';
@@ -12,7 +12,7 @@ interface AuthDetailsProps {
 
 const authDetails: React.FC<AuthDetailsProps> = ({ setAuthUser }) => {
     const [showSignUp, setShowSignUp] = useState(false);
-    const year = new Date().getFullYear()
+    const currentYear = new Date().getFullYear()
 
     useEffect(() => {
         const listen = onAuthStateChanged(auth, (user) => {
@@ -32,7 +32,7 @@ const authDetails: React.FC<AuthDetailsProps> = ({ setAuthUser }) => {
     };
 
   return (
-   <div className='container'>
+   <div className='login-signup-container'>
         <div className='form'>
             <div className='title-container'>
                 <img src={CulinarioLogo}  alt='culinario-logo'/>
@@ -47,7 +47,12 @@ const authDetails: React.FC<AuthDetailsProps> = ({ setAuthUser }) => {
                 </span>
             </p>
         </div>
-        <p>Created by Adam Stádník | MIT License | Copyright (c) {year} Adam Stádník </p>
+        <div className='other-login-options'>
+            <button onClick={signInWithGoogle}>Sign In with Google</button>
+        </div>
+        <div className='footer-container'>
+            <p>Created by Adam Stádník | MIT License | Copyright (c) {currentYear} Adam Stádník </p>
+        </div>
     </div>
   )
 }

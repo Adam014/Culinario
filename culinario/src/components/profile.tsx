@@ -5,7 +5,7 @@
 
 const profile = () => {
   return (
-    <div>
+    <div className="profile-container">
       
     </div>
   )
