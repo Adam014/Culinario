@@ -12,6 +12,7 @@ interface AuthDetailsProps {
 
 const authDetails: React.FC<AuthDetailsProps> = ({ setAuthUser }) => {
     const [showSignUp, setShowSignUp] = useState(false);
+    const year = new Date().getFullYear()
 
     useEffect(() => {
         const listen = onAuthStateChanged(auth, (user) => {
@@ -46,7 +47,7 @@ const authDetails: React.FC<AuthDetailsProps> = ({ setAuthUser }) => {
                 </span>
             </p>
         </div>
-        <p>Created by Adam Stádník | Copyright 2023 All rights reserved. </p>
+        <p>Created by Adam Stádník | MIT License | Copyright (c) {year} Adam Stádník </p>
     </div>
   )
 }
