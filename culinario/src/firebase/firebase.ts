@@ -14,6 +14,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 
+// je potreba pridat providera na firebasu
 export const providerGoogle = new GoogleAuthProvider();
 export const providerGitHub = new GithubAuthProvider();
 export const providerFacebook = new FacebookAuthProvider();
