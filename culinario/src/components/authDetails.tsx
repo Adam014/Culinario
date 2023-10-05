@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
-import { auth, providerGitHub, providerGoogle } from '../firebase/firebase';
+import { auth, providerGitHub, providerGoogle, providerFacebook } from '../firebase/firebase';
 import { onAuthStateChanged, signInWithPopup } from 'firebase/auth';
 import { User } from 'firebase/auth'; 
 import Login from './auth/login';
 import SignUp from './auth/signUp';
-import {CulinarioLogo, Google, GitHub} from "../images/images";
+import {CulinarioLogo, Google, GitHub, Fb} from "../images/images";
 
 interface AuthDetailsProps {
   setAuthUser: React.Dispatch<React.SetStateAction<User | null>>;
@@ -52,6 +52,16 @@ const authDetails: React.FC<AuthDetailsProps> = ({ setAuthUser }) => {
         });
     };
 
+    const signInWithFacebook = () => {
+        signInWithPopup(auth, providerFacebook)
+        .then(() => {
+
+        }).catch((error) => {
+            console.log(error);
+            setError(error);
+        });
+    };  
+
   return (
    <div className='login-signup-container'>
         <div className='form'>
@@ -78,6 +88,9 @@ const authDetails: React.FC<AuthDetailsProps> = ({ setAuthUser }) => {
                 </button>
                 <button onClick={signInWithGithub} className='button-github'>
                     <img src={GitHub} alt='github-login-icon'/>
+                </button>
+                <button onClick={signInWithFacebook} className='button-facebook'>
+                    <img src={Fb} alt='fb-login-icon'/>
                 </button>
                 <div className="error-container">
                     {error && <p className="error-message">{error}</p>}
