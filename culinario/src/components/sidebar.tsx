@@ -12,10 +12,6 @@ const sidebar: React.FC<SidebarProps> = ({ authUser, setAuthUser } : SidebarProp
 
     const [activeTab, setActiveTab] = useState(null);
 
-    const handleClick = (tab) => {
-        setActiveTab(tab);
-    };
-
     const userSignOut = () => {
         signOut(auth)
         .then(() => {
@@ -31,15 +27,15 @@ const sidebar: React.FC<SidebarProps> = ({ authUser, setAuthUser } : SidebarProp
         <aside className="aside">
             <div className="aside-container">
                 <h4>Discover</h4>
-                <div className={`${activeTab === "home" ? "home-container-active" : "home-container"}`} onClick={() => handleClick("home")}>
+                <div className={`${activeTab === "home" ? "home-container-active" : "home-container"}`}>
                     <img src={Home} alt="home-icon"/>
                     <h6>Home</h6>
                 </div>
-                <div className={`${activeTab === "favorite" ? "favorite-container-active" : "favorite-container"}`} onClick={() => handleClick("favorite")}>
+                <div className={`${activeTab === "favorite" ? "favorite-container-active" : "favorite-container"}`}>
                     <img src={Heart} alt="favorite-icon"/>
                     <h6>Favorites</h6>
                 </div>
-                <div className={`${activeTab === "recipes" ? "recipes-container-active" : "recipes-container"}`} onClick={() => handleClick("recipes")}>
+                <div className={`${activeTab === "recipes" ? "recipes-container-active" : "recipes-container"}`}>
                     <img src={Recipes} alt="recipes-icon"/>
                     <h6>All recipes</h6>
                 </div>
