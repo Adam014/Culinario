@@ -1,13 +1,31 @@
 import { useState } from "react"
 import { Recipes, Home, Heart } from "../images/images";
+import { auth } from "../firebase/firebase";
+import { User, signOut } from "firebase/auth"
 
-const sidebar = () => {
+interface SidebarProps {
+    authUser: User | null; // Define the type for authUser
+    setAuthUser: React.Dispatch<React.SetStateAction<User | null>>;
+  }
+  
+const sidebar: React.FC<SidebarProps> = ({ authUser, setAuthUser } : SidebarProps) => {
 
     const [activeTab, setActiveTab] = useState(null);
 
     const handleClick = (tab) => {
         setActiveTab(tab);
     };
+
+    const userSignOut = () => {
+        signOut(auth)
+        .then(() => {
+            console.log("Successfully signed out!")
+            setAuthUser(null)
+        })
+        .catch((error) => console.log(error))
+    }
+
+    console.log(authUser)
 
     return (
         <aside className="aside">
@@ -26,6 +44,7 @@ const sidebar = () => {
                     <h6>All recipes</h6>
                 </div>
             </div>
+            <button onClick={userSignOut}>Logout</button>
         </aside>
     )
 }

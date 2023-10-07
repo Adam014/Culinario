@@ -52,42 +52,42 @@ const authDetails: React.FC<AuthDetailsProps> = ({ setAuthUser }) => {
         });
     };
 
-  return (
-   <div className='login-signup-container'>
-        <div className='form'>
-            <div className='title-container'>
-                <img src={CulinarioLogo}  alt='culinario-logo'/>
+    return (
+        <div className='login-signup-container'>
+            <div className='form'>
+                <div className='title-container'>
+                    <img src={CulinarioLogo}  alt='culinario-logo'/>
+                </div>
+                <div className='form-container'>
+                    {showSignUp ? <SignUp /> : <Login />}
+                </div>
+                <p className='account-container'>
+                    {showSignUp ? "Already have an account? " : "Don't have an account? "}
+                    <span onClick={toggleForm} className="here-link">
+                        {showSignUp ? "Login here" : "Create one here"}
+                    </span>
+                </p>
+                { /* add reset button */ }
+                {/* <p className='reset-password' onClick={handleReset}>Reset password</p> */}
             </div>
-            <div className='form-container'>
-                {showSignUp ? <SignUp /> : <Login />}
-            </div>
-            <p className='account-container'>
-                {showSignUp ? "Already have an account? " : "Don't have an account? "}
-                <span onClick={toggleForm} className="here-link">
-                    {showSignUp ? "Login here" : "Create one here"}
-                </span>
-            </p>
-            { /* add reset button */ }
-            {/* <p className='reset-password' onClick={handleReset}>Reset password</p> */}
-        </div>
-        <div className='other-login-options'> 
-            <h3>{showSignUp ? "Sign up with other providers" : "Login with other providers"}</h3>
-            <div className='providers'>
-                <button onClick={signInWithGoogle} className='button-google'>
-                    <img src={Google} alt="google-login-icon" />    
-                </button>
-                <button onClick={signInWithGithub} className='button-github'>
-                    <img src={GitHub} alt='github-login-icon'/>
-                </button>
-                <div className="error-container">
-                    {error && <p className="error-message">{error}</p>}
+            <div className='other-login-options'> 
+                <h3>{showSignUp ? "Sign up with other providers" : "Login with other providers"}</h3>
+                <div className='providers'>
+                    <button onClick={signInWithGoogle} className='button-google'>
+                        <img src={Google} alt="google-login-icon" />    
+                    </button>
+                    <button onClick={signInWithGithub} className='button-github'>
+                        <img src={GitHub} alt='github-login-icon'/>
+                    </button>
+                    <div className="error-container">
+                        {error && <p className="error-message">{error}</p>}
+                    </div>
                 </div>
             </div>
+            <div className='footer-container'>
+                <p>Created by Adam Stádník | MIT License | Copyright (c) {currentYear} Adam Stádník </p>
+            </div>
         </div>
-        <div className='footer-container'>
-            <p>Created by Adam Stádník | MIT License | Copyright (c) {currentYear} Adam Stádník </p>
-        </div>
-    </div>
   )
 }
 
