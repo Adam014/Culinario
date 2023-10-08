@@ -4,13 +4,14 @@
 // zobrazit accessToken, email, isVerified, isAnon, Created, LastLogged atd atd
 import { User } from "firebase/auth";
 import { ProfileIcon } from "../images/images";
+import { useNavigate } from "react-router-dom";
 
 interface ProfileProps {
   authUser: User | null; 
 }
 
 const profile: React.FC<ProfileProps> = ({ authUser } : ProfileProps) => {
-
+  const redirect = useNavigate();
   console.log(authUser)  
 
   const createdAt = authUser?.metadata?.creationTime
@@ -39,7 +40,9 @@ const profile: React.FC<ProfileProps> = ({ authUser } : ProfileProps) => {
       })
     : "N/A";
 
-
+  const handleReset = () => {
+      redirect("/reset-password")
+  }  
 
   return (
     <div className="profile-container">
@@ -52,6 +55,7 @@ const profile: React.FC<ProfileProps> = ({ authUser } : ProfileProps) => {
             <p>Email: {authUser?.email}</p>
             <p>uid: {authUser?.uid}</p>
             <p>Provider: {authUser?.providerData[0].providerId}</p>
+            <h4 onClick={handleReset}>Reset your password here</h4>
           </div>
         </div>
         <h3>Last login: {lastSignInTime}</h3>
