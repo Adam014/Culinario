@@ -1,5 +1,6 @@
 import { CulinarioLogo, ProfileIcon, Search } from "../images/images";
-import { User } from "firebase/auth"
+import { User } from "firebase/auth";
+import { useNavigate } from 'react-router-dom';
 
 interface NavbarProps {
   authUser: User | null; // Define the type for authUser
@@ -7,8 +8,12 @@ interface NavbarProps {
 
 const navbar = ({ authUser } : NavbarProps) => {
 
-  console.log(authUser)
-  console.log(authUser?.providerData)
+  const redirect = useNavigate(); // Initialize useNavigate
+
+  const handleProfileClick = () => {
+    redirect('/profile'); // Navigate to the /profile route
+  };
+
   return (
     <nav className="navbar">
         <img src={CulinarioLogo} alt="culinario-navbar-logo"/>
@@ -18,7 +23,7 @@ const navbar = ({ authUser } : NavbarProps) => {
             <button><img src={Search} alt="search-icon" /></button>
           </form>
         </div>  
-        <div className="profile-container">
+        <div className="profile-container" onClick={handleProfileClick}>
           {authUser?.providerData && authUser?.providerData.length > 0 && authUser?.providerData[0].providerId === "google.com" || "github-com" ? <img src={authUser?.photoURL!} alt={authUser?.photoURL || "profile-user-icon"} /> : <img src={ProfileIcon} alt="profile-user-icon"/>}
           <p>{authUser?.providerData && authUser?.providerData.length > 0 && authUser?.providerData[0].providerId === "google.com" || "github-com" ? `${authUser?.displayName}` : `${authUser?.email}`}</p>  
         </div>  

@@ -206,18 +206,19 @@ input[type="password"]
 .aside
     grid-area: aside
     background-color: $formBg
+    width: 23rem
 
     .aside-container
         justify-content: center
         display: grid
         
         h4
-            padding: 40px 0px 20px 0
+            padding: 40px 0px 20px 25px
             font-size: 1.4rem
             opacity: 0.7
 
         .home-container, .favorite-container, .recipes-container
-            padding: 10px
+            padding: 10px 0px 10px 55px
             display: flex   
             align-items: center
             font-size: 1.4rem
@@ -227,11 +228,41 @@ input[type="password"]
             h6  
                 padding: 5px 0px 0px 20px
 
-        .home-container-active, .favorite-container-active, .recipes-container-active
-            @extend .home-container, .favorite-container, .recipes-container
-            background-color: $gold
-            h6  
-                padding: 5px 0px 0px 20px
+        .button-container
+            position: absolute
+            bottom: 0
+            padding: 25px
+            button
+                cursor: pointer
+                padding: 0.5em 1em
+                border: 1px solid $gold
+                position: relative
+                overflow: hidden
+                background-color: transparent
+                text-align: center
+                text-transform: uppercase
+                font-size: 16px
+                transition: .3s
+                z-index: 1
+                color: $gold
+                &::before
+                    content: ''
+                    width: 0
+                    height: 300%
+                    position: absolute
+                    top: 50%
+                    left: 50%
+                    transform: translate(-50%, -50%) rotate(45deg)
+                    background: $gold
+                    transition: .5s ease
+                    display: block
+                    z-index: -1
+                
+                &:hover
+                    color: $white
+                    &::before
+                        width: 105%
+
 
 .welcome-title
     padding: 30px

@@ -1,25 +1,25 @@
 import { useState } from "react"
 import './App.sass'
 import { User } from 'firebase/auth';
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import AuthDetails from './components/authDetails'
-import Home from "./components/mainBlog";
+import Home from "./components/homePage";
+import Profile from "./components/profile";
 
 const App = () => {
   const [authUser, setAuthUser] = useState<User | null>(null);
 
-  console.log(authUser)
+  console.log(authUser);
 
   return (
     <Router>
-      <div className={authUser ? "recipes-page-container" : "container"}>
         <Routes>
           <Route
-            path="/"
+            path="/homepage"
             element={authUser ? <Home authUser={authUser} setAuthUser={setAuthUser} /> : <AuthDetails setAuthUser={setAuthUser} />}
           />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
-      </div>
     </Router>
   )
 }

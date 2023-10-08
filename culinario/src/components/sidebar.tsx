@@ -27,20 +27,22 @@ const sidebar: React.FC<SidebarProps> = ({ authUser, setAuthUser } : SidebarProp
         <aside className="aside">
             <div className="aside-container">
                 <h4>Discover</h4>
-                <div className={`${activeTab === "home" ? "home-container-active" : "home-container"}`}>
+                <div className="home-container">
                     <img src={Home} alt="home-icon"/>
                     <h6>Home</h6>
                 </div>
-                <div className={`${activeTab === "favorite" ? "favorite-container-active" : "favorite-container"}`}>
+                <div className="favorite-container">
                     <img src={Heart} alt="favorite-icon"/>
                     <h6>Favorites</h6>
                 </div>
-                <div className={`${activeTab === "recipes" ? "recipes-container-active" : "recipes-container"}`}>
+                <div className="recipes-container">
                     <img src={Recipes} alt="recipes-icon"/>
                     <h6>All recipes</h6>
                 </div>
+                <div className="button-container">
+                    <button onClick={userSignOut}>Logout</button>
+                </div>
             </div>
-            <button onClick={userSignOut}>Logout</button>
         </aside>
     )
 }
