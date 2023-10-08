@@ -45,8 +45,11 @@ const profile: React.FC<ProfileProps> = ({ authUser } : ProfileProps) => {
   }  
 
   return (
-    <div className="profile-container">
-        <h1>Your Profile</h1> 
+    <div className="main">
+        <div className="title-text">      
+          <h1>Your Profile</h1> 
+          <h4 onClick={handleReset}>Reset your password here</h4>
+        </div>
         <div className="default-user-info"> 
           {authUser?.providerData && authUser?.providerData.length > 0 && authUser?.providerData[0].providerId === "google.com" || "github-com" ? <img src={authUser?.photoURL!} alt={authUser?.photoURL || "profile-user-icon"} /> : <img src={ProfileIcon} alt="profile-user-icon"/>}
           <div className="title-user-info">
@@ -55,7 +58,6 @@ const profile: React.FC<ProfileProps> = ({ authUser } : ProfileProps) => {
             <p>Email: {authUser?.email}</p>
             <p>uid: {authUser?.uid}</p>
             <p>Provider: {authUser?.providerData[0].providerId}</p>
-            <h4 onClick={handleReset}>Reset your password here</h4>
           </div>
         </div>
         <h3>Last login: {lastSignInTime}</h3>
