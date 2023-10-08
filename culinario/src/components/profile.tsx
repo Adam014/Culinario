@@ -5,7 +5,7 @@
 const profile = () => {
   
   return (
-    <div className="profile-container">
+    <div className="main">
         <h1>Hello</h1>
     </div>
   )

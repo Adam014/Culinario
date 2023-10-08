@@ -1,7 +1,7 @@
 import { User } from "firebase/auth";
-import Navbar from "./navbar";
-import Sidebar from "./sidebar";
-import Main from "./main";
+import Navbar from "./Navbar";
+import Sidebar from "./Sidebar";
+import Main from "./Main";
 
 interface HomeDetailsProps {
   authUser: User | null; 

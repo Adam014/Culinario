@@ -1,4 +1,3 @@
-import { useState } from "react"
 import { Recipes, Home, Heart } from "../images/images";
 import { auth } from "../firebase/firebase";
 import { User, signOut } from "firebase/auth"
@@ -9,9 +8,6 @@ interface SidebarProps {
   }
   
 const sidebar: React.FC<SidebarProps> = ({ authUser, setAuthUser } : SidebarProps) => {
-
-    const [activeTab, setActiveTab] = useState(null);
-
     const userSignOut = () => {
         signOut(auth)
         .then(() => {

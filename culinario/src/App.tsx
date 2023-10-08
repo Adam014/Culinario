@@ -4,7 +4,8 @@ import { User } from 'firebase/auth';
 import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import AuthDetails from './components/authDetails'
 import Home from "./components/homePage";
-import Profile from "./components/profile";
+import Profile from "./components/Profile";
+import ResetPassword from "./components/ResetPasword/resetPassword";
 
 const App = () => {
   const [authUser, setAuthUser] = useState<User | null>(null);
@@ -14,11 +15,9 @@ const App = () => {
   return (
     <Router>
         <Routes>
-          <Route
-            path="/homepage"
-            element={authUser ? <Home authUser={authUser} setAuthUser={setAuthUser} /> : <AuthDetails setAuthUser={setAuthUser} />}
-          />
+          <Route path="/homepage" element={authUser ? <Home authUser={authUser} setAuthUser={setAuthUser} /> : <AuthDetails setAuthUser={setAuthUser} authUser={authUser}/>} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
         </Routes>
     </Router>
   )

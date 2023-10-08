@@ -5,12 +5,15 @@ import { User } from 'firebase/auth';
 import Login from './auth/login';
 import SignUp from './auth/signUp';
 import {CulinarioLogo, Google, GitHub } from "../images/images";
+import { useNavigate } from 'react-router-dom';
 
 interface AuthDetailsProps {
-  setAuthUser: React.Dispatch<React.SetStateAction<User | null>>;
+    authUser: User | null; 
+    setAuthUser: React.Dispatch<React.SetStateAction<User | null>>;
 }
 
-const authDetails: React.FC<AuthDetailsProps> = ({ setAuthUser }) => {
+const authDetails: React.FC<AuthDetailsProps> = ({ authUser, setAuthUser }) => {
+    const redirect = useNavigate();
     const [showSignUp, setShowSignUp] = useState(false);
     const currentYear = new Date().getFullYear()
     const [error, setError] = useState<string | null>(null);
@@ -52,6 +55,10 @@ const authDetails: React.FC<AuthDetailsProps> = ({ setAuthUser }) => {
         });
     };
 
+    const handleReset = () => {
+        redirect("/reset-password")
+    }  
+
     return (
         <div className='login-signup-container'>
             <div className='form'>
@@ -68,7 +75,7 @@ const authDetails: React.FC<AuthDetailsProps> = ({ setAuthUser }) => {
                     </span>
                 </p>
                 { /* add reset button */ }
-                {/* <p className='reset-password' onClick={handleReset}>Reset password</p> */}
+                <p className='reset-password' onClick={handleReset}>Forgot password?</p>
             </div>
             <div className='other-login-options'> 
                 <h3>{showSignUp ? "Sign up with other providers" : "Login with other providers"}</h3>
