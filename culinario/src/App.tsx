@@ -16,7 +16,7 @@ const App = () => {
     <Router>
         <Routes>
           <Route path="/" element={authUser ? <Home authUser={authUser} setAuthUser={setAuthUser} /> : <AuthDetails setAuthUser={setAuthUser} authUser={authUser}/>} />
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/profile/*" element={<Profile />} />
           <Route path="/reset-password" element={<ResetPassword />} />
         </Routes>
     </Router>
