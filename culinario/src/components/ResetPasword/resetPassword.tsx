@@ -9,7 +9,7 @@ const resetPassword = () => {
         e.preventDefault()
         const emailValue = e.target.email.value;
         sendPasswordResetEmail(auth, emailValue)
-        .then((data)=>{
+        .then(() =>{
             alert("Check your email inbox")
         })
         .catch((error) => {

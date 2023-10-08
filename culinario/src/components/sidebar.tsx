@@ -17,8 +17,6 @@ const sidebar: React.FC<SidebarProps> = ({ authUser, setAuthUser } : SidebarProp
         .catch((error) => console.log(error))
     }
 
-    console.log(authUser)
-
     return (
         <aside className="aside">
             <div className="aside-container">

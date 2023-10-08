@@ -4,14 +4,16 @@ import { useNavigate } from 'react-router-dom';
 
 interface NavbarProps {
   authUser: User | null; // Define the type for authUser
+  setShowProfile: (show: boolean) => void;
 }
 
-const navbar = ({ authUser } : NavbarProps) => {
+const navbar = ({ authUser, setShowProfile } : NavbarProps) => {
 
   const redirect = useNavigate(); // Initialize useNavigate
 
   const handleProfileClick = () => {
-    redirect('/profile'); // Navigate to the /profile route
+    setShowProfile(true);
+    redirect("/profile")
   };
 
   return (
