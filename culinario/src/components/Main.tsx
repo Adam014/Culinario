@@ -10,7 +10,7 @@ const main = ({ authUser } : MainProps) => {
     <main className="main">
         <div className="welcome-title">
         <h1>Welcome back {authUser?.providerData && authUser?.providerData.length > 0 && authUser?.providerData[0].providerId === "google.com" || "github-com" ? `${authUser?.displayName}` : `${authUser?.email}`}</h1>
-        <h2>What are you cooking today?</h2>
+        <h3>What are you cooking today?</h3>
         </div>
     </main>
   )

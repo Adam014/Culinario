@@ -12,7 +12,7 @@ interface AuthDetailsProps {
     setAuthUser: React.Dispatch<React.SetStateAction<User | null>>;
 }
 
-const authDetails: React.FC<AuthDetailsProps> = ({ authUser, setAuthUser }) => {
+const authDetails: React.FC<AuthDetailsProps> = ({ setAuthUser }) => {
     const redirect = useNavigate();
     const [showSignUp, setShowSignUp] = useState(false);
     const currentYear = new Date().getFullYear()
