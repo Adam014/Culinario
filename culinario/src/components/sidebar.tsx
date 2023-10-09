@@ -16,6 +16,7 @@ const sidebar: React.FC<SidebarProps> = ({ setAuthUser } : SidebarProps) => {
         .then(() => {
             console.log("Successfully signed out!")
             setAuthUser(null)
+            redirect("/")
         })
         .catch((error) => console.log(error))
     }
