@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react"
 import { User } from "firebase/auth";
 import { ProfileIcon } from "../images/images";
 import { useNavigate } from "react-router-dom";
@@ -12,6 +13,13 @@ interface ProfileProps {
 const profile: React.FC<ProfileProps> = ({ authUser , setAuthUser, toggleProfile } : ProfileProps) => {
 
   const redirect = useNavigate();  
+  const [loading, setLoading] = useState(true); // Add loading state
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 500);
+  }, []);
 
   const createdAt = authUser?.metadata?.creationTime
     ? new Date(authUser?.metadata?.creationTime).toLocaleString("cz-CZ", {
@@ -51,21 +59,31 @@ const profile: React.FC<ProfileProps> = ({ authUser , setAuthUser, toggleProfile
   return (
      <Layout authUser={authUser} setAuthUser={setAuthUser} toggleProfile={toggleProfile}>
         <main className="main">
-            <div className="title-text">      
-              <h1>Your Profile</h1> 
+          {loading ? (
+          // Display a loading indicator or skeleton screen while loading
+          <div className="loading-indicator">
+            Loading Data...
+          </div>
+        ) : (
+          <>
+            {/* Display user data when loading is false */}
+            <div className="title-text">
+              <h1>Your Profile</h1>
               <h4 onClick={handleReset}>Reset your password here</h4>
             </div>
-            <div className="default-user-info"> 
+            <div className="default-user-info">
               {authUser?.providerData && authUser?.providerData.length > 0 && authUser?.providerData[0].providerId === "google.com" || "github-com" ? <img src={authUser?.photoURL!} alt={authUser?.photoURL || "profile-user-icon"} /> : <img src={ProfileIcon} alt="profile-user-icon"/>}
               <div className="title-user-info">
-                <h2>{authUser?.providerData && authUser?.providerData.length > 0 && authUser?.providerData[0].providerId === "google.com" || "github-com" ? `${authUser?.displayName}` : `${authUser?.email}`}</h2>  
-                <p>Account created at: {createdAt}</p> 
+                <h2>{authUser?.providerData && authUser?.providerData.length > 0 && authUser?.providerData[0].providerId === "google.com" || "github-com" ? `${authUser?.displayName}` : `${authUser?.email}`}</h2>
+                <p>Account created at: {createdAt}</p>
                 <p>Email: {authUser?.email}</p>
                 <p>uid: {authUser?.uid}</p>
                 <p>Provider: {authUser?.providerData[0].providerId}</p>
               </div>
             </div>
             <h3>Last login: {lastSignInTime}</h3>
+          </>
+        )}
         </main>
       </Layout>
   )

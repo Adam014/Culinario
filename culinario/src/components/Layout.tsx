@@ -18,7 +18,7 @@ const Layout: React.FC<LayoutProps> = ({
   toggleProfile,
 }: LayoutProps) => {
   return (
-    <div className={authUser ? "recipes-page-container" : "container"}>
+    <div className="recipes-page-container">
       <Navbar authUser={authUser} toggleProfile={toggleProfile} />
       <Sidebar authUser={authUser} setAuthUser={setAuthUser} />
       {children}
