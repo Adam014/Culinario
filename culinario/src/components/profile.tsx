@@ -43,8 +43,7 @@ const profile: React.FC<ProfileProps> = ({ authUser , setAuthUser, toggleProfile
       redirect("/reset-password")
   }  
 
-  // console.log(authUser)
-
+  console.log(authUser)
 
   // need to fix
   // when page is reloaded the props doesnt show
