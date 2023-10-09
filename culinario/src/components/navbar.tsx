@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { CulinarioLogo, ProfileIcon, Search } from "../images/images";
 import { User } from "firebase/auth";
 
@@ -7,10 +8,16 @@ interface NavbarProps {
 }
 
 const navbar = ({ authUser, toggleProfile } : NavbarProps) => {
+  const redirect = useNavigate();
 
+  const handleHome = () => {
+    redirect("/")
+  }
   return (
     <nav className="navbar">
-        <img src={CulinarioLogo} alt="culinario-navbar-logo"/>
+        <div className="logo-container" onClick={handleHome}>
+          <img src={CulinarioLogo} alt="culinario-navbar-logo"/>
+        </div>
         <div className="search-bar-container">
           <form className="search-box">
             <input type="text" placeholder="Search for a recipe, ingredient..." />

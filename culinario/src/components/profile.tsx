@@ -12,8 +12,7 @@ interface ProfileProps {
 
 const profile: React.FC<ProfileProps> = ({ authUser , setAuthUser, toggleProfile } : ProfileProps) => {
 
-  const redirect = useNavigate();
-  console.log(authUser)  
+  const redirect = useNavigate();  
 
   const createdAt = authUser?.metadata?.creationTime
     ? new Date(authUser?.metadata?.creationTime).toLocaleString("cz-CZ", {
@@ -45,7 +44,11 @@ const profile: React.FC<ProfileProps> = ({ authUser , setAuthUser, toggleProfile
       redirect("/reset-password")
   }  
 
-  console.log(authUser)
+  // console.log(authUser)
+
+
+  // need to fix
+  // when page is reloaded the props doesnt show
 
   return (
      <div className={authUser ? "recipes-page-container" : "container"}>

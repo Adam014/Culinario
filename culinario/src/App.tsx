@@ -10,13 +10,13 @@ import ResetPassword from "./components/ResetPasword/resetPassword";
 const App = () => {
   const [authUser, setAuthUser] = useState<User | null>(null);
 
-  // console.log(authUser);
+  console.log(authUser);
 
   return (
     <Router>
         <Routes>
           <Route path="/" element={authUser ? <Home authUser={authUser} setAuthUser={setAuthUser} /> : <AuthDetails setAuthUser={setAuthUser} authUser={authUser}/>} />
-          <Route path="/profile/*" element={<Profile authUser={authUser} setAuthUser={setAuthUser} />} />
+          <Route path="/profile" element={<Profile authUser={authUser} setAuthUser={setAuthUser}/>} />
           <Route path="/reset-password" element={<ResetPassword />} />
         </Routes>
     </Router>
