@@ -1,7 +1,3 @@
-
-// pridat profile component
-// po kliknuti zobrazit misto mainBlog, profiůe
-// zobrazit accessToken, email, isVerified, isAnon, Created, LastLogged atd atd
 import { User } from "firebase/auth";
 import { ProfileIcon } from "../images/images";
 import { useNavigate } from "react-router-dom";

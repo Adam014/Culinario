@@ -2,6 +2,7 @@ import { User } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
+// import Profile from "./Profile";
 import Main from "./Main";
 
 interface HomeDetailsProps {

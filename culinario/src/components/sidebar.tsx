@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 interface SidebarProps {
     authUser: User | null; // Define the type for authUser
     setAuthUser: React.Dispatch<React.SetStateAction<User | null>>;
-  }
+}
   
 const sidebar: React.FC<SidebarProps> = ({ setAuthUser } : SidebarProps) => {
     const redirect = useNavigate();
