@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
-import { auth, providerGitHub, providerGoogle } from '../firebase/firebase';
+import { auth, providerGitHub, providerGoogle } from '../../firebase/firebase';
 import { onAuthStateChanged, signInWithPopup } from 'firebase/auth';
 import { User } from 'firebase/auth'; 
-import Login from './auth/login';
-import SignUp from './auth/signUp';
-import {CulinarioLogo, Google, GitHub } from "../images/images";
+import Login from './login';
+import SignUp from './signUp';
+import {CulinarioLogo, Google, GitHub } from "../../images/images";
 import { useNavigate } from 'react-router-dom';
 
 interface AuthDetailsProps {

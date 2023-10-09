@@ -2,7 +2,7 @@ import { useState } from "react"
 import './App.sass'
 import { User } from 'firebase/auth';
 import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
-import AuthDetails from './components/authDetails'
+import AuthDetails from './components/auth/authDetails'
 import Home from "./components/homePage";
 import Profile from "./components/Profile";
 import ResetPassword from "./components/ResetPasword/resetPassword";
