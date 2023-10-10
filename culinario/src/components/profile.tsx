@@ -52,6 +52,8 @@ const profile: React.FC<ProfileProps> = ({ authUser , setAuthUser } : ProfilePro
       redirect("/reset-password")
   }  
 
+  // when user clicks profile, the active tab bg color will be removed
+
   return (
      <Layout authUser={authUser} setAuthUser={setAuthUser} >
         <main className="main">

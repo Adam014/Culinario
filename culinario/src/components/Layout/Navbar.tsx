@@ -5,15 +5,12 @@ import { Link } from "react-router-dom";
 
 interface NavbarProps {
   authUser: User | null; 
-  setActiveTab: (tabName : string) => void;
 }
 
-const navbar = ({ authUser, setActiveTab } : NavbarProps) => {
+const navbar = ({ authUser } : NavbarProps) => {
   const { imgSrc, name} = getProfileInfo(authUser);
 
-  const handleClickProfile = () => {
-    setActiveTab("profile");
-  }
+  // need to fix when logo is clicked, the active tab will be home
 
   return (
     <nav className="navbar">
@@ -26,7 +23,7 @@ const navbar = ({ authUser, setActiveTab } : NavbarProps) => {
             <button><img src={Search} alt="search-icon" /></button>
           </form>
         </div>  
-        <Link to="/profile" className="profile-container" onClick={handleClickProfile}>
+        <Link to="/profile" className="profile-container">
           {/* cleaner code, saving everything to variables, importing from authUtils */}
           <img src={imgSrc || ProfileIcon} alt="profile-icon" />
           <p>{name}</p>  
