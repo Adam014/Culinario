@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useEffect } from "react"
 import { Recipes, Home, Heart } from "../../images/images";
 import { auth } from "../../firebase/firebase";
 import { User, signOut } from "firebase/auth"
@@ -9,24 +9,19 @@ interface SidebarProps {
     setAuthUser: React.Dispatch<React.SetStateAction<User | null>>;
     setActiveTab: (tabName: string) => void;
     activeTab: string;
+    handleTabClick: (tabName: string) => void;
 }
   
-const sidebar: React.FC<SidebarProps> = ({ setAuthUser, setActiveTab, activeTab } : SidebarProps) => {
-    // define state to keep track of the active tab
-    const savedTab = localStorage.getItem("activeTab");
-
+const sidebar: React.FC<SidebarProps> = ({ setAuthUser, setActiveTab, activeTab, handleTabClick } : SidebarProps) => {
+ 
     useEffect(() => {
-        // Check for a saved tab in localStorage when the component mounts
-        if (savedTab) {
+      const savedTab = localStorage.getItem('activeTab');
+      // console.log('Saved tab:', savedTab);
+      if (savedTab) {
         setActiveTab(savedTab);
-        }
-    }, []);
-
-    const handleTabClick = (tabName: string) => {
-        // Set the active tab and save it to localStorage
-        setActiveTab(tabName);
-        localStorage.setItem("activeTab", tabName);
-    };
+        // console.log('Setting active tab to savedTab');
+      }
+    }, [setActiveTab]);
 
     const userSignOut = () => {
         signOut(auth)

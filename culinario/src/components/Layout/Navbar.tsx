@@ -4,17 +4,17 @@ import { getProfileInfo } from '../auth/authUtils';
 import { Link } from "react-router-dom";
 
 interface NavbarProps {
-  authUser: User | null; 
+  authUser: User | null;
+  handleTabClick: (tabName: string) => void;
 }
 
-const navbar = ({ authUser } : NavbarProps) => {
-  const { imgSrc, name} = getProfileInfo(authUser);
+const navbar = ({ authUser, handleTabClick } : NavbarProps) => {
 
-  // need to fix when logo is clicked, the active tab will be home
+  const { imgSrc, name} = getProfileInfo(authUser);
 
   return (
     <nav className="navbar">
-        <Link to="/" className="logo-container">
+        <Link to="/" className="logo-container" onClick={() => handleTabClick("home")}>
           <img src={CulinarioLogo} alt="culinario-navbar-logo"/>
         </Link>
         <div className="search-bar-container">
