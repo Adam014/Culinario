@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { CulinarioLogo, ProfileIcon, Search } from "../images/images";
 import { User } from "firebase/auth";
+import { getProfileInfo } from './auth/authUtils';
 
 interface NavbarProps {
   authUser: User | null; 
@@ -9,10 +10,14 @@ interface NavbarProps {
 
 const navbar = ({ authUser, toggleProfile } : NavbarProps) => {
   const redirect = useNavigate();
+  const { imgSrc, name} = getProfileInfo(authUser);
 
   const handleHome = () => {
     redirect("/")
   }
+
+  console.log(authUser)
+
   return (
     <nav className="navbar">
         <div className="logo-container" onClick={handleHome}>
@@ -25,8 +30,9 @@ const navbar = ({ authUser, toggleProfile } : NavbarProps) => {
           </form>
         </div>  
         <div className="profile-container" onClick={toggleProfile}>
-          {authUser?.providerData && authUser?.providerData.length > 0 && authUser?.providerData[0].providerId === "google.com" || "github-com" ? <img src={authUser?.photoURL!} alt={authUser?.photoURL || "profile-user-icon"} /> : <img src={ProfileIcon} alt="profile-user-icon"/>}
-          <p>{authUser?.providerData && authUser?.providerData.length > 0 && authUser?.providerData[0].providerId === "google.com" || "github-com" ? `${authUser?.displayName}` : `${authUser?.email}`}</p>  
+          {/* cleaner code, saving everything to variables, importing from authUtils */}
+          <img src={imgSrc || ProfileIcon} alt="profile-icon" />
+          <p>{name}</p>  
         </div>  
     </nav>
   )
