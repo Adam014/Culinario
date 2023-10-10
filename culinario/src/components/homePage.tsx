@@ -1,7 +1,7 @@
 import { User } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 // import Profile from "./Profile";
-import Layout from "./Layout";
+import Layout from "./Layout/Layout";
 import { getProfileInfo } from './auth/authUtils';
 
 interface HomeDetailsProps {

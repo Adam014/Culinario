@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import { User } from "firebase/auth";
 import { ProfileIcon } from "../images/images";
 import { useNavigate } from "react-router-dom";
-import Layout from "./Layout";
+import Layout from "./Layout/Layout";
 import { getProfileInfo } from './auth/authUtils';
 
 interface ProfileProps {
@@ -19,7 +19,7 @@ const profile: React.FC<ProfileProps> = ({ authUser , setAuthUser } : ProfilePro
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
-    }, 300);
+    }, 400);
   }, []);
 
   const createdAt = authUser?.metadata?.creationTime

@@ -6,6 +6,7 @@ import AuthDetails from './components/auth/authDetails'
 import Home from "./components/homePage";
 import Profile from "./components/Profile";
 import ResetPassword from "./components/ResetPasword/resetPassword";
+import Favorites from "./components/Favorites";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase/firebase";
 
@@ -31,6 +32,7 @@ const App = () => {
           <Route path="/" element={authUser ? <Home authUser={authUser} setAuthUser={setAuthUser} /> : <AuthDetails setAuthUser={setAuthUser} authUser={authUser}/>} />
           <Route path="/profile" element={<Profile authUser={authUser} setAuthUser={setAuthUser} />} />
           <Route path="/reset-password" element={<ResetPassword />} />
+          <Route path="/favorites" element={<Favorites authUser={authUser} setAuthUser={setAuthUser}/>} />
         </Routes>
     </Router>
   )
