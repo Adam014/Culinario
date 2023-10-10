@@ -8,10 +8,9 @@ import { getProfileInfo } from './auth/authUtils';
 interface ProfileProps {
   authUser: User | null; 
   setAuthUser: React.Dispatch<React.SetStateAction<User | null>>;
-  toggleProfile: () => void;
 }
 
-const profile: React.FC<ProfileProps> = ({ authUser , setAuthUser, toggleProfile } : ProfileProps) => {
+const profile: React.FC<ProfileProps> = ({ authUser , setAuthUser } : ProfileProps) => {
 
   const redirect = useNavigate();  
   const [loading, setLoading] = useState(true); 
@@ -54,7 +53,7 @@ const profile: React.FC<ProfileProps> = ({ authUser , setAuthUser, toggleProfile
   }  
 
   return (
-     <Layout authUser={authUser} setAuthUser={setAuthUser} toggleProfile={toggleProfile}>
+     <Layout authUser={authUser} setAuthUser={setAuthUser} >
         <main className="main">
           {loading ? (
           <div className="loading-indicator">

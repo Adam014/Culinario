@@ -11,15 +11,10 @@ interface HomeDetailsProps {
 
 const homePage: React.FC<HomeDetailsProps> = ({ authUser, setAuthUser } : HomeDetailsProps) => {
 
-  const redirect = useNavigate();
   const { name } = getProfileInfo(authUser);
 
-  const toggleProfile = () => {
-    redirect("/profile")
-  };
-
   return (
-    <Layout authUser={authUser} setAuthUser={setAuthUser} toggleProfile={toggleProfile}>
+    <Layout authUser={authUser} setAuthUser={setAuthUser} >
       <main className="main">
         <div className="welcome-title">
           {/* cleaner code, saving everything to variables, importing from authUtils */}

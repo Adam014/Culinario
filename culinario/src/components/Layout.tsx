@@ -8,18 +8,16 @@ interface LayoutProps {
   children: React.ReactNode;
   authUser: User | null;
   setAuthUser: React.Dispatch<React.SetStateAction<User | null>>;
-  toggleProfile: () => void;
 }
 
 const Layout: React.FC<LayoutProps> = ({
   children,
   authUser,
   setAuthUser,
-  toggleProfile,
 }: LayoutProps) => {
   return (
     <div className="recipes-page-container">
-      <Navbar authUser={authUser} toggleProfile={toggleProfile} />
+      <Navbar authUser={authUser} />
       <Sidebar authUser={authUser} setAuthUser={setAuthUser} />
       {children}
     </div>

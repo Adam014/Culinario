@@ -5,16 +5,19 @@ import { getProfileInfo } from './auth/authUtils';
 
 interface NavbarProps {
   authUser: User | null; 
-  toggleProfile: () => void;
 }
 
-const navbar = ({ authUser, toggleProfile } : NavbarProps) => {
+const navbar = ({ authUser } : NavbarProps) => {
   const redirect = useNavigate();
   const { imgSrc, name} = getProfileInfo(authUser);
 
   const handleHome = () => {
     redirect("/")
   }
+
+  const toggleProfile = () => {
+    redirect("/profile")
+  };
 
   console.log(authUser)
 
