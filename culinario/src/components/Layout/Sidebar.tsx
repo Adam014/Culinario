@@ -7,15 +7,16 @@ import { Link } from "react-router-dom";
 interface SidebarProps {
     authUser: User | null; 
     setAuthUser: React.Dispatch<React.SetStateAction<User | null>>;
+    setActiveTab: (tabName: string) => void;
+    activeTab: string;
 }
   
-const sidebar: React.FC<SidebarProps> = ({ setAuthUser } : SidebarProps) => {
+const sidebar: React.FC<SidebarProps> = ({ setAuthUser, setActiveTab, activeTab } : SidebarProps) => {
     // define state to keep track of the active tab
-     const [activeTab, setActiveTab] = useState("home");
+    const savedTab = localStorage.getItem("activeTab");
 
     useEffect(() => {
         // Check for a saved tab in localStorage when the component mounts
-        const savedTab = localStorage.getItem("activeTab");
         if (savedTab) {
         setActiveTab(savedTab);
         }

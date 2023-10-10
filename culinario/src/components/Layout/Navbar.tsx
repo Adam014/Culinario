@@ -5,10 +5,15 @@ import { Link } from "react-router-dom";
 
 interface NavbarProps {
   authUser: User | null; 
+  setActiveTab: (tabName : string) => void;
 }
 
-const navbar = ({ authUser } : NavbarProps) => {
+const navbar = ({ authUser, setActiveTab } : NavbarProps) => {
   const { imgSrc, name} = getProfileInfo(authUser);
+
+  const handleClickProfile = () => {
+    setActiveTab("profile");
+  }
 
   return (
     <nav className="navbar">
@@ -21,7 +26,7 @@ const navbar = ({ authUser } : NavbarProps) => {
             <button><img src={Search} alt="search-icon" /></button>
           </form>
         </div>  
-        <Link to="/profile" className="profile-container">
+        <Link to="/profile" className="profile-container" onClick={handleClickProfile}>
           {/* cleaner code, saving everything to variables, importing from authUtils */}
           <img src={imgSrc || ProfileIcon} alt="profile-icon" />
           <p>{name}</p>  
