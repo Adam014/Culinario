@@ -1,9 +1,11 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
+const { VITE_REACT_APP_RAPIDAPI_KEY } = import.meta.env;
+
 // fix it - error 401 - unauthorized
 
 const tastyApiHeader = {
-    'X-RapidAPI-Key': '9dc29de3d5msh0761f1f4542b5dap1b216ejsn20a35a96245d',
+    'X-RapidAPI-Key': VITE_REACT_APP_RAPIDAPI_KEY,
     'X-RapidAPI-Host': 'tasty.p.rapidapi.com'
 }
 
