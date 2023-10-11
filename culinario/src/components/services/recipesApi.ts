@@ -2,21 +2,22 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 // fix it - error 401 - unauthorized
 
-const recipesApiHeader = {
-    'X-RapidAPI-Key': '1a5c76bad7mshd02968c835e1556p186438jsnf43902ab9551',
-	'X-RapidAPI-Host': 'tasty.p.rapidapi.com'
+const tastyApiHeader = {
+    'X-RapidAPI-Key': '9dc29de3d5msh0761f1f4542b5dap1b216ejsn20a35a96245d',
+    'X-RapidAPI-Host': 'tasty.p.rapidapi.com'
 }
 
+// base url API
 const baseUrl = 'https://tasty.p.rapidapi.com';
 
-const createRequest = (url: string) => ({url, header: recipesApiHeader})
+const createRequest = (url: string) => ({url, headers: tastyApiHeader})
 
 export const recipesApi = createApi({
     reducerPath: 'recipesApi',
     baseQuery: fetchBaseQuery({ baseUrl }),
     endpoints: (builder) => ({
         getRecipes: builder.query({
-            query: () => createRequest(`/recipes/list?from=0&size=100`),
+            query: (count) => createRequest(`/recipes/list?limit=${count}`),
         })
     })
 })
