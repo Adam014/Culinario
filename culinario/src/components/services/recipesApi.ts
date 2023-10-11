@@ -17,7 +17,7 @@ export const recipesApi = createApi({
     baseQuery: fetchBaseQuery({ baseUrl }),
     endpoints: (builder) => ({
         getRecipes: builder.query({
-            query: (count) => createRequest(`/recipes/list?limit=${count}`),
+            query: (count) => createRequest(`/recipes/list?from=0&size=${count}`),
         })
     })
 })
