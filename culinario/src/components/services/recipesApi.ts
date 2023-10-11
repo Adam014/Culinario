@@ -1,5 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
+// error 401 - unauthorized
+
 const recipesApiHeader = {
     'X-RapidAPI-Host': 'tasty.p.rapidapi.com',
     'X-RapidAPI-Key': '1a5c76bad7mshd02968c835e1556p186438jsnf43902ab9551'
