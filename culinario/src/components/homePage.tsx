@@ -3,6 +3,8 @@ import { User } from "firebase/auth";
 import Layout from "./Layout/Layout";
 import { getProfileInfo } from './auth/authUtils';
 
+import { useGetRecipesQuery } from "./services/recipesApi";
+
 interface HomeDetailsProps {
   authUser: User | null; 
   setAuthUser: React.Dispatch<React.SetStateAction<User | null>>;
@@ -11,6 +13,12 @@ interface HomeDetailsProps {
 const homePage: React.FC<HomeDetailsProps> = ({ authUser, setAuthUser } : HomeDetailsProps) => {
 
   const { name } = getProfileInfo(authUser);
+
+  const {data, isFetching} = useGetRecipesQuery(10);
+
+  console.log(data)
+
+  if(isFetching) return 'Loading...';
 
   return (
     <Layout authUser={authUser} setAuthUser={setAuthUser} >
