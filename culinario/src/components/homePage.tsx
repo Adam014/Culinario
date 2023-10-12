@@ -14,13 +14,6 @@ const homePage: React.FC<HomeDetailsProps> = ({ authUser, setAuthUser } : HomeDe
 
   const { name } = getProfileInfo(authUser);
 
-  const {data, isFetching} = useGetRecipesQuery(10);
-
-  console.log(data)
-  // console.log(isFetching)
-
-  if(isFetching) return 'Loading...';
-
   return (
     <Layout authUser={authUser} setAuthUser={setAuthUser} >
       <main className="main">
@@ -29,7 +22,7 @@ const homePage: React.FC<HomeDetailsProps> = ({ authUser, setAuthUser } : HomeDe
           <h1>Welcome back, {name}</h1>
           <h3>What are you cooking today?</h3>
         </div>
-    </main>
+      </main>
     </Layout>
   )
 }
