@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
 
 import AuthDetails from './components/auth/authDetails'
 import Home from "./components/homePage";
-import Profile from "./components/Profile";
+import Profile from "./components/profile";
 import ResetPassword from "./components/ResetPasword/resetPassword";
 import Favorites from "./components/Favorites";
 import Recipes from "./components/Recipes";
@@ -14,8 +14,10 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase/firebase";
 
 const App = () => {
+  // setting the state for user information
   const [authUser, setAuthUser] = useState<User | null>(null);
 
+  // useEffect for logging and checking if user is logged
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {

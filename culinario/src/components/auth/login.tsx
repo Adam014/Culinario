@@ -4,11 +4,19 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { OpenEye, ClosedEye } from "../../images/images";
 
 const login = () => {
+    // setting the state for email
     const [email, setEmail] = useState('');
+
+    // setting the state for password
     const [password, setPassword] = useState('');
+
+    // setting the state for
     const [error, setError] = useState<string | null>(null);
+
+    // setting the state to show the password
     const [showPassword, setShowPassword] = useState(false);
 
+    // function for button to login with email and password
     const loginWithEmailAndPassword = (e: React.FormEvent) => {
         e.preventDefault();
         signInWithEmailAndPassword(auth, email, password)
@@ -20,6 +28,7 @@ const login = () => {
         });
     };
 
+    // function to show the password
     const togglePasswordVisibility = () => {
         setShowPassword((prevShowPassword) => !prevShowPassword);
     };

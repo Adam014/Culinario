@@ -4,9 +4,13 @@ import { auth } from "../../firebase/firebase";
 import { useNavigate } from "react-router-dom";
 
 const resetPassword = () => {
+    // setting state for error
     const [error, setError] = useState(null);
+
+    // setting a variable for redirecting
     const redirect = useNavigate();
 
+    // function for submit reset button
     const handleSubmit = async(e: React.FormEvent) => {
         e.preventDefault()
         const emailValue = e.target.email.value;
@@ -19,6 +23,7 @@ const resetPassword = () => {
         });
     };   
 
+    // function for getting back on home
     const handleBack = () => {
         redirect("/")
     }

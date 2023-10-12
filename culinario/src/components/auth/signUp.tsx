@@ -4,11 +4,21 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { OpenEye, ClosedEye } from "../../images/images";
 
 const SignUp = () => {
+    // fix it maybe for one variables - fixing duplicity
+
+    // setting the state for email
     const [email, setEmail] = useState('');
+
+    // setting the state for password
     const [password, setPassword] = useState('');
+
+    // setting the state to show the errors
     const [error, setError] = useState<string | null>(null);
+
+    // setting the state for showing password
     const [showPassword, setShowPassword] = useState(false);
 
+    // function for signing with email and password
     const signUpWithEmailAndPassword = (e: React.FormEvent) => {
         e.preventDefault();
         createUserWithEmailAndPassword(auth, email, password)
@@ -20,6 +30,8 @@ const SignUp = () => {
         });
     };
 
+    // fixing with only one function - duplicity
+    // function for seeing the password
     const togglePasswordVisibility = () => {
         setShowPassword((prevShowPassword) => !prevShowPassword);
     };

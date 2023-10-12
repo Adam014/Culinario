@@ -7,17 +7,26 @@ import SignUp from './signUp';
 import {CulinarioLogo, Google, GitHub } from "../../images/images";
 import { useNavigate } from 'react-router-dom';
 
+// passing throught props and defining its types
 interface AuthDetailsProps {
     authUser: User | null; 
     setAuthUser: React.Dispatch<React.SetStateAction<User | null>>;
 }
 
 const authDetails: React.FC<AuthDetailsProps> = ({ setAuthUser }) => {
+    // defining redirect 
     const redirect = useNavigate();
+
+    // defining a state to show signup
     const [showSignUp, setShowSignUp] = useState(false);
+
+    // getting the current year
     const currentYear = new Date().getFullYear()
+
+    // defining a state for errors
     const [error, setError] = useState<string | null>(null);
 
+    // useffect to log in and sign up
     useEffect(() => {
         const listen = onAuthStateChanged(auth, (user) => {
             if (user){
@@ -31,10 +40,12 @@ const authDetails: React.FC<AuthDetailsProps> = ({ setAuthUser }) => {
         };
     }, []);
 
+    // function to show signup
     const toggleForm = () => {
         setShowSignUp(!showSignUp);
     };
 
+    // function to login/signup with github
     const signInWithGithub = () => {
         signInWithPopup(auth, providerGitHub)
         .then(() => {
@@ -45,6 +56,7 @@ const authDetails: React.FC<AuthDetailsProps> = ({ setAuthUser }) => {
         });
     };
 
+    // function to login/signup with google
     const signInWithGoogle = () => {
         signInWithPopup(auth, providerGoogle)
         .then(() => {
@@ -55,6 +67,7 @@ const authDetails: React.FC<AuthDetailsProps> = ({ setAuthUser }) => {
         });
     };
 
+    // function for redirecting to reset-password
     const handleReset = () => {
         redirect("/reset-password")
     }  
@@ -74,7 +87,6 @@ const authDetails: React.FC<AuthDetailsProps> = ({ setAuthUser }) => {
                         {showSignUp ? "Login here" : "Create one here"}
                     </span>
                 </p>
-                { /* add reset button */ }
                 <p className='reset-password' onClick={handleReset}>Forgot password?</p>
             </div>
             <div className='other-login-options'> 

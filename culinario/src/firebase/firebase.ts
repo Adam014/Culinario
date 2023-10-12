@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider, GithubAuthProvider } from 'firebase/auth';
 
+// firebase config
 const firebaseConfig = {
   apiKey: "AIzaSyDkvlsp-vcZfVtBJmbcBBmPPkzjKs01jNM",
   authDomain: "culinario-9e98b.firebaseapp.com",
@@ -14,7 +15,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 
-// je potreba pridat providera na firebasu
+// exporting the providers
 export const providerGoogle = new GoogleAuthProvider();
 export const providerGitHub = new GithubAuthProvider();
 

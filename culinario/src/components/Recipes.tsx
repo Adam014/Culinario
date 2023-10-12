@@ -2,6 +2,7 @@ import Layout from "./Layout/Layout";
 import { User } from "firebase/auth";
 import AllRecipes from "./allRecipes";
 
+// passing throught props and defining its types
 interface RecipesProps {
   authUser: User | null; 
   setAuthUser: React.Dispatch<React.SetStateAction<User | null>>;

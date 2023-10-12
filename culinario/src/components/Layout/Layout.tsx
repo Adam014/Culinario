@@ -4,6 +4,7 @@ import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
 import { User } from "firebase/auth";
 
+// passing throught props and defining its types
 interface LayoutProps {
   children: React.ReactNode;
   authUser: User | null;
@@ -11,15 +12,14 @@ interface LayoutProps {
 }
 
 const Layout: React.FC<LayoutProps> = ({children, authUser, setAuthUser,}: LayoutProps) => {
+
+    // setting the state of the activeTab, default is "home", getting the activeTab from localStorage
     const [activeTab, setActiveTab] = useState(() => {
       const savedTab = localStorage.getItem("activeTab");
-      return savedTab || "home"; // Use the saved value or default to "home"
+      return savedTab || "home"; // 
     });
 
-    useEffect(() => {
-      localStorage.setItem("activeTab", activeTab); // Update localStorage when activeTab changes
-    }, [activeTab]);
-
+    // updating the state activeTab when activeTab changes
     const handleTabClick = (tabName: string) => {
       // Set the active tab and save it to localStorage
       setActiveTab(tabName);
@@ -27,6 +27,7 @@ const Layout: React.FC<LayoutProps> = ({children, authUser, setAuthUser,}: Layou
     };
 
     return (
+      // layout for the components
       <div className="recipes-page-container">
         <Navbar authUser={authUser} handleTabClick={handleTabClick}/>
         <Sidebar authUser={authUser} setAuthUser={setAuthUser} setActiveTab={setActiveTab} activeTab={activeTab} handleTabClick={handleTabClick}/>

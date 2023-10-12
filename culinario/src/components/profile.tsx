@@ -5,23 +5,30 @@ import { useNavigate } from "react-router-dom";
 import Layout from "./Layout/Layout";
 import { getProfileInfo } from './auth/authUtils';
 
+// passing throught props and defining its types
 interface ProfileProps {
   authUser: User | null; 
   setAuthUser: React.Dispatch<React.SetStateAction<User | null>>;
 }
 
 const profile: React.FC<ProfileProps> = ({ authUser , setAuthUser } : ProfileProps) => {
-
+  // setting the variable for redirecting
   const redirect = useNavigate();  
+
+  // setting the state for loading the data, if it is loading, loading will show
   const [loading, setLoading] = useState(true); 
+
+  // importing the user image
   const { imgSrc } = getProfileInfo(authUser);
 
+  // using the loading
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
     }, 400);
   }, []);
 
+  // formatting the user lastlogged and accountcreated time for Czech time
   const createdAt = authUser?.metadata?.creationTime
     ? new Date(authUser?.metadata?.creationTime).toLocaleString("cz-CZ", {
         timeZone: "Europe/Prague", 
@@ -48,15 +55,15 @@ const profile: React.FC<ProfileProps> = ({ authUser , setAuthUser } : ProfilePro
       })
     : "N/A";
 
+  // function for resetting the password
   const handleReset = () => {
       redirect("/reset-password")
   }  
 
-  // when user clicks profile, the active tab bg color will be removed
-
   return (
      <Layout authUser={authUser} setAuthUser={setAuthUser} >
         <main className="main">
+          {/* add custom loader */}
           {loading ? (
           <div className="loading-indicator">
             Loading Data...
