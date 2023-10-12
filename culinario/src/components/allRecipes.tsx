@@ -9,8 +9,10 @@ const allRecipes : React.FC<AllRecipesProps> = ({ simplified } : AllRecipesProps
 
     const {data: recipesList, isFetching} = useGetRecipesQuery(count)
 
-    console.log(count)
+    // add custom loader
     if(isFetching) return "Loading..."
+
+    // add whole block of the single recipe
 
     return(
         <div>

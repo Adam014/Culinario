@@ -18,9 +18,10 @@ const homePage: React.FC<HomeDetailsProps> = ({ authUser, setAuthUser } : HomeDe
 
   const {data, isFetching} = useGetRecipesQuery(40);
 
-  console.log(data)
+  console.log(data?.results)
   // console.log(isFetching)
 
+  // add custom loader
   if(isFetching) return 'Loading...';
 
   return (
@@ -31,7 +32,7 @@ const homePage: React.FC<HomeDetailsProps> = ({ authUser, setAuthUser } : HomeDe
           <h1>Welcome back, {name}</h1>
           <h3>What are you cooking today?</h3>
           <h4><Link to="/recipes">Show more</Link></h4>
-          <AllRecipes simplified />
+          <AllRecipes simplified={true} />
         </div>
       </main>
     </Layout>
