@@ -2,7 +2,7 @@ import { useEffect } from "react"
 import { Recipes, Home, Heart } from "../../images/images";
 import { auth } from "../../firebase/firebase";
 import { User, signOut } from "firebase/auth"
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 // passing throught props and defining its types
 interface SidebarProps {
@@ -14,7 +14,8 @@ interface SidebarProps {
 }
   
 const sidebar: React.FC<SidebarProps> = ({ setAuthUser, setActiveTab, activeTab, handleTabClick } : SidebarProps) => {
- 
+    const redirect = useNavigate();
+
     // getting from localStorage the activeTab
     useEffect(() => {
       const savedTab = localStorage.getItem('activeTab');
@@ -31,7 +32,8 @@ const sidebar: React.FC<SidebarProps> = ({ setAuthUser, setActiveTab, activeTab,
         signOut(auth)
         .then(() => {
             console.log("Successfully signed out!")
-            setAuthUser(null)
+            setAuthUser(null);
+            redirect("/");
         })
         .catch((error) => console.log(error))
     }
