@@ -4,6 +4,8 @@ import Layout from "./Layout/Layout";
 import { getProfileInfo } from './auth/authUtils';
 
 import { useGetRecipesQuery } from "./services/recipesApi";
+import { Link } from "react-router-dom";
+import AllRecipes from "./allRecipes";
 
 interface HomeDetailsProps {
   authUser: User | null; 
@@ -14,6 +16,13 @@ const homePage: React.FC<HomeDetailsProps> = ({ authUser, setAuthUser } : HomeDe
 
   const { name } = getProfileInfo(authUser);
 
+  const {data, isFetching} = useGetRecipesQuery(40);
+
+  // console.log(data?.results[0]?.name)
+  // console.log(isFetching)
+
+  if(isFetching) return 'Loading...';
+
   return (
     <Layout authUser={authUser} setAuthUser={setAuthUser} >
       <main className="main">
@@ -21,6 +30,8 @@ const homePage: React.FC<HomeDetailsProps> = ({ authUser, setAuthUser } : HomeDe
           {/* cleaner code, saving everything to variables, importing from authUtils */}
           <h1>Welcome back, {name}</h1>
           <h3>What are you cooking today?</h3>
+          <h4><Link to="/recipes">Show more</Link></h4>
+          <AllRecipes simplified />
         </div>
       </main>
     </Layout>
