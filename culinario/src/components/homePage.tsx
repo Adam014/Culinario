@@ -18,7 +18,7 @@ const homePage: React.FC<HomeDetailsProps> = ({ authUser, setAuthUser } : HomeDe
 
   const {data, isFetching} = useGetRecipesQuery(40);
 
-  // console.log(data?.results[0]?.name)
+  console.log(data)
   // console.log(isFetching)
 
   if(isFetching) return 'Loading...';
