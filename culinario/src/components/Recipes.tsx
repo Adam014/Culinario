@@ -1,6 +1,6 @@
 import Layout from "./Layout/Layout";
 import { User } from "firebase/auth";
-import AllRecipes from "./allRecipes";
+import AllRecipes from "./services/allRecipes";
 
 // passing throught props and defining its types
 interface RecipesProps {

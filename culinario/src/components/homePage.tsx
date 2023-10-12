@@ -5,7 +5,7 @@ import { getProfileInfo } from './auth/authUtils';
 
 import { useGetRecipesQuery } from "./services/recipesApi";
 import { Link } from "react-router-dom";
-import AllRecipes from "./allRecipes";
+import AllRecipes from "./services/allRecipes";
 
 // passing throught props and defining its types
 interface HomeDetailsProps {

@@ -1,4 +1,4 @@
-import { useGetRecipesQuery } from "./services/recipesApi";
+import { useGetRecipesQuery } from "./recipesApi";
 
 interface AllRecipesProps {
     simplified: Boolean;
