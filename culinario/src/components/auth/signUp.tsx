@@ -62,7 +62,7 @@ const SignUp = () => {
                         />
                     </div>
                 </label><br />
-                <button>Sign Up</button>
+                <button>Sign Up →</button>
             </form>
             <div className="error-container">
                 {error && <p className="error-message">{error}</p>}

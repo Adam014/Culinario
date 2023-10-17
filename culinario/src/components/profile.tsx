@@ -63,7 +63,7 @@ const profile: React.FC<ProfileProps> = ({ authUser , setAuthUser } : ProfilePro
   return (
      <Layout authUser={authUser} setAuthUser={setAuthUser} >
         <main className="main">
-          {/* add custom loader */}
+          {/* add custom card skeleton */}
           {loading ? (
           <div className="loading-indicator">
             Loading Data...

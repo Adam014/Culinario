@@ -25,7 +25,14 @@ const homePage: React.FC<HomeDetailsProps> = ({ authUser, setAuthUser } : HomeDe
   // console.log(isFetching)
 
   // add custom loader
-  if(isFetching) return 'Loading...';
+  if(isFetching) return <div className="loader-container">
+                          <div className="loader">
+                            <div className="circle"></div>
+                            <div className="circle"></div>
+                            <div className="circle"></div>
+                            <div className="circle"></div>
+                          </div>
+                        </div>
 
   return (
     <Layout authUser={authUser} setAuthUser={setAuthUser} >

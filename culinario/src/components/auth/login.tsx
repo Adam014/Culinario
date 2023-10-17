@@ -60,7 +60,7 @@ const login = () => {
                         />
                     </div>
                 </label><br />
-                <button>Log In</button>
+                <button>Log In →</button>
             </form>
             <div className="error-container">
                 {error && <p className="error-message">{error}</p>}
