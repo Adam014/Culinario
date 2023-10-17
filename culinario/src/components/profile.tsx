@@ -25,7 +25,7 @@ const profile: React.FC<ProfileProps> = ({ authUser , setAuthUser } : ProfilePro
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
-    }, 400);
+    }, 2000);
   }, []);
 
   // formatting the user lastlogged and accountcreated time for Czech time
@@ -65,8 +65,17 @@ const profile: React.FC<ProfileProps> = ({ authUser , setAuthUser } : ProfilePro
         <main className="main">
           {/* add custom card skeleton */}
           {loading ? (
-          <div className="loading-indicator">
-            Loading Data...
+          <div id="container">
+            <div id="square" className="shimmer"></div>
+            <div id="content">
+              <div id="content-title" className="shimmer"></div>
+              <div id="content-desc">
+                <div className="line shimmer"></div>
+                <div className="line shimmer"></div>
+                <div className="line shimmer"></div>
+                <div className="line shimmer"></div>
+              </div>
+            </div>
           </div>
         ) : (
           <>
