@@ -15,6 +15,8 @@ body
     background-color: $bgColor
     color: $white
     font-family: 'Comfortaa', cursive
+    display: flex
+    flex-direction: column
 
 .container
     height: 100%
@@ -155,10 +157,10 @@ input[type="password"]
 
 .recipes-page-container
     display: grid
-    height: 100%
-    grid-template-rows: 0fr 1fr 1fr
+    flex: 1
+    grid-template-rows: 0fr 5.333fr 1fr
     grid-template-columns: 0.5fr 1fr 1fr
-    gap: 0px 0px
+    gap: px 0px
     grid-template-areas: 'navbar navbar navbar' 'aside main main' 'aside main main'
                         
 
@@ -220,6 +222,7 @@ input[type="password"]
     grid-area: aside
     background-color: $formBg
     width: 23rem
+    min-height: 100% // Set a minimum height for the sidebar
 
     .aside-container
         justify-content: center
@@ -478,3 +481,7 @@ input[type="password"]
                 width: 100%
                 height: 10px
 
+// single recipes
+
+.recipe-image
+    height: 2rem

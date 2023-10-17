@@ -1,5 +1,4 @@
 import { User } from "firebase/auth";
-// import Profile from "./Profile";
 import Layout from "./Layout/Layout";
 import { getProfileInfo } from './auth/authUtils';
 

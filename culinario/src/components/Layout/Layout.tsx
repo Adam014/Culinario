@@ -1,5 +1,5 @@
 // Layout.tsx
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
 import { User } from "firebase/auth";
