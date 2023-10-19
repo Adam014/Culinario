@@ -20,7 +20,7 @@ const homePage: React.FC<HomeDetailsProps> = ({ authUser, setAuthUser } : HomeDe
   // setting the state for data that is passed from the API
   const {data, isFetching} = useGetRecipesQuery(10);
 
-  console.log(data?.results)
+  // console.log(data?.results)
   // console.log(isFetching)
 
   // add custom loader
@@ -40,7 +40,7 @@ const homePage: React.FC<HomeDetailsProps> = ({ authUser, setAuthUser } : HomeDe
           {/* cleaner code, saving everything to variables, importing from authUtils */}
           <h1>Welcome back, {name}</h1>
           <h3>What are you cooking today?</h3>
-          <h4><Link to="/recipes">Show more</Link></h4>
+          <h4 className="show-more-link"><Link to="/recipes">Show more</Link></h4>
           <AllRecipes simplified={true} />
         </div>
       </main>

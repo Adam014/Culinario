@@ -42,7 +42,7 @@ const AllRecipes: React.FC<AllRecipesProps> = ({ simplified }: AllRecipesProps) 
         {recipes?.map((recipe: { name: string, id: number, thumbnail_url: string }) => (
           <div className="recipe-card" key={recipe.id}>
             <Link to={`/recipe/${recipe.id}`} key={recipe.id}>
-              <div>
+              <div className="recipe-info">
                 <img className="recipe-image" src={recipe.thumbnail_url} alt={recipe.name} />
                 <h2>{recipe.name}</h2>
               </div>
