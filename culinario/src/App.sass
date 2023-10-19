@@ -215,14 +215,11 @@ input[type="password"]
         background: transparent
         cursor: pointer
 
-.main
-    grid-area: main
-
 .aside
     grid-area: aside
     background-color: $formBg
-    width: 23rem
-    min-height: 100% // Set a minimum height for the sidebar
+    width: 90%
+    min-height: 105% 
 
     .aside-container
         justify-content: center
@@ -234,12 +231,12 @@ input[type="password"]
             opacity: 0.7
 
         .home-container, .favorite-container, .recipes-container
-            padding: 10px 0px 10px 55px
+            padding: 10px 35px 10px 35px
             display: flex   
             align-items: center
-            font-size: 1.4rem
+            font-size: 1.2rem
             cursor: pointer
-            width: 21rem
+            width: 100%
             text-decoration: none
             color: $white
             h6  
@@ -269,8 +266,8 @@ input[type="password"]
                     width: 0
                     height: 300%
                     position: absolute
-                    top: 50%
-                    left: 50%
+                    top: 40%
+                    left: 40%
                     transform: translate(-50%, -50%) rotate(45deg)
                     background: $gold
                     transition: .5s ease
@@ -281,11 +278,6 @@ input[type="password"]
                     color: $white
                     &::before
                         width: 105%
-
-
-.welcome-title
-    padding: 30px
-    font-size:1rem
 
 // reset password
 
@@ -337,7 +329,8 @@ input[type="password"]
 // profile
 
 .main
-    padding: 10px
+    padding: 50px
+    grid-area: main
     h1, h3
         padding: 30px
 
@@ -498,20 +491,30 @@ input[type="password"]
 
 .recipe-card-container
     display: grid
-    grid-template-columns: repeat( auto-fit, minmax(300px, 0.2fr) )
-    gap: 50px
+    grid-template-columns: repeat(auto-fit, minmax(350px, 0.2fr)) /* Adjusted the fraction value to 1fr */
+    gap: 30px /* Change to a fixed pixel value */
     padding: 60px 0px 0px 0px
+    justify-content: center
+    
     .recipe-card
         background-color: $formBg
-        width: 18vw
+        transition: 0.2s ease-in-out
         a
             text-decoration: none
             .recipe-info
+                color: white
                 img     
                     height: 13rem
                     width: 100%
                 h2     
-                    color: white
-                    font-size: 1.4vw
+                    font-size: 1.1vw
+                p, h2   
+                    padding: 10px
+                button      
+                    margin: 10px
+                .rating
+                    img
+                        width: 2rem
+                        height: 2rem
         &:hover
-            
+            transform: translateY(-10px)

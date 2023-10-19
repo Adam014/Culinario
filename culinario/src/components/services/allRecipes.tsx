@@ -3,6 +3,8 @@ import { useGetRecipesQuery } from "./recipesApi";
 import { Input } from 'antd';
 import { Link } from 'react-router-dom';
 
+import { ThumbsUp } from "../../images/images";
+
 interface AllRecipesProps {
   simplified: boolean;
 }
@@ -39,12 +41,17 @@ const AllRecipes: React.FC<AllRecipesProps> = ({ simplified }: AllRecipesProps) 
       }
 
       <div className='recipe-card-container'>
-        {recipes?.map((recipe: { name: string, id: number, thumbnail_url: string }) => (
+        {recipes?.map((recipe: { name: string, id: number, thumbnail_url: string, description: string }) => (
           <div className="recipe-card" key={recipe.id}>
             <Link to={`/recipe/${recipe.id}`} key={recipe.id}>
               <div className="recipe-info">
                 <img className="recipe-image" src={recipe.thumbnail_url} alt={recipe.name} />
                 <h2>{recipe.name}</h2>
+                <div className="rating">
+                  
+                </div>
+                <p>{recipe.description}</p>
+                <button className="button">Learn</button>
               </div>
             </Link>
           </div>

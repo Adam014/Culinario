@@ -9,6 +9,7 @@ import Recipes from "./recipes.png";
 import Google from "./google.png";
 import GitHub from "./github.png";
 import Fb from "./fb.png";
+import ThumbsUp from "./thumbsup.png";
 
 export {
     CulinarioLogo,
@@ -21,5 +22,6 @@ export {
     Recipes,
     Google,
     GitHub,
-    Fb
+    Fb,
+    ThumbsUp,
 };
