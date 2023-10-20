@@ -10,6 +10,7 @@ import Google from "./google.png";
 import GitHub from "./github.png";
 import Fb from "./fb.png";
 import ThumbsUp from "./thumbsup.png";
+import Time from "./time.png";
 
 export {
     CulinarioLogo,
@@ -24,4 +25,5 @@ export {
     GitHub,
     Fb,
     ThumbsUp,
+    Time,
 };
