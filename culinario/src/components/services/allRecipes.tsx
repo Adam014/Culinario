@@ -41,14 +41,15 @@ const AllRecipes: React.FC<AllRecipesProps> = ({ simplified }: AllRecipesProps) 
       }
 
       <div className='recipe-card-container'>
-        {recipes?.map((recipe: { name: string, id: number, thumbnail_url: string, description: string }) => (
+        {recipes?.map((recipe: { name: string, id: number, thumbnail_url: string, description: string, user_ratings: { count_positive: number } }) => (
           <div className="recipe-card" key={recipe.id}>
             <Link to={`/recipe/${recipe.id}`} key={recipe.id}>
               <div className="recipe-info">
                 <img className="recipe-image" src={recipe.thumbnail_url} alt={recipe.name} />
                 <h2>{recipe.name}</h2>
                 <div className="rating">
-                  
+                  <p>{recipe.user_ratings.count_positive}</p>
+                  <img src={ThumbsUp} alt="thumbs-up"/>
                 </div>
                 <p>{recipe.description}</p>
                 <button className="button">Learn</button>
