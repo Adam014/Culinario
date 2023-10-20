@@ -1,29 +1,21 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { API_KEY, API_HOST, API_BASE_URL } from './apiConfig';
 
-// importing the api key
-const { VITE_REACT_APP_RAPIDAPI_KEY } = import.meta.env;
-
-// api headers
 const tastyApiHeader = {
-    'X-RapidAPI-Key': VITE_REACT_APP_RAPIDAPI_KEY,
-    'X-RapidAPI-Host': 'tasty.p.rapidapi.com'
-}
+    'X-RapidAPI-Key': API_KEY,
+    'X-RapidAPI-Host': API_HOST,
+};
 
-// base url API
-const baseUrl = 'https://tasty.p.rapidapi.com';
+const createRequest = (url: string) => ({ url, headers: tastyApiHeader });
 
-// creating the request
-const createRequest = (url: string) => ({url, headers: tastyApiHeader})
-
-// creating the api
 export const recipesApi = createApi({
     reducerPath: 'recipesApi',
-    baseQuery: fetchBaseQuery({ baseUrl }),
+    baseQuery: fetchBaseQuery({ baseUrl: API_BASE_URL }),
     endpoints: (builder) => ({
         getRecipes: builder.query({
             query: (count) => createRequest(`/recipes/list?from=0&size=${count}`),
-        })
-    })
-})
+        }),
+    }),
+});
 
 export const { useGetRecipesQuery } = recipesApi;
