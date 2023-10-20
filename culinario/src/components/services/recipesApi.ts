@@ -15,7 +15,13 @@ export const recipesApi = createApi({
         getRecipes: builder.query({
             query: (count) => createRequest(`/recipes/list?from=0&size=${count}`),
         }),
+        getRecipeDetails: builder.query({
+            query: (id) => createRequest(`/recipe/${id}`),
+        }),
     }),
 });
 
-export const { useGetRecipesQuery } = recipesApi;
+export const { 
+    useGetRecipesQuery,
+    useGetRecipeDetailsQuery,
+ } = recipesApi;
