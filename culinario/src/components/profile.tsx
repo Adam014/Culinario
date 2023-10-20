@@ -12,26 +12,19 @@ interface ProfileProps {
 }
 
 const profile: React.FC<ProfileProps> = ({ authUser , setAuthUser } : ProfileProps) => {
-  // setting the variable for redirecting
-  const redirect = useNavigate();  
-
-  // setting the state for loading the data, if it is loading, loading will show
-  const [loading, setLoading] = useState(true); 
-
-  // importing the user image
+  const redirect = useNavigate();
+  const [loading, setLoading] = useState(true);
   const { imgSrc } = getProfileInfo(authUser);
 
-  // using the loading
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
     }, 2000);
   }, []);
 
-  // formatting the user lastlogged and accountcreated time for Czech time
   const createdAt = authUser?.metadata?.creationTime
-    ? new Date(authUser?.metadata?.creationTime).toLocaleString("cz-CZ", {
-        timeZone: "Europe/Prague", 
+    ? new Date(authUser.metadata.creationTime).toLocaleString("cz-CZ", {
+        timeZone: "Europe/Prague",
         weekday: "short",
         year: "numeric",
         month: "short",
@@ -43,8 +36,8 @@ const profile: React.FC<ProfileProps> = ({ authUser , setAuthUser } : ProfilePro
     : "N/A";
 
   const lastSignInTime = authUser?.metadata?.lastSignInTime
-    ? new Date(authUser?.metadata?.lastSignInTime).toLocaleString("cz-CZ", {
-        timeZone: "Europe/Prague", 
+    ? new Date(authUser.metadata.lastSignInTime).toLocaleString("cz-CZ", {
+        timeZone: "Europe/Prague",
         weekday: "short",
         year: "numeric",
         month: "short",
@@ -55,10 +48,7 @@ const profile: React.FC<ProfileProps> = ({ authUser , setAuthUser } : ProfilePro
       })
     : "N/A";
 
-  // function for resetting the password
-  const handleReset = () => {
-      redirect("/reset-password")
-  }  
+  const handleReset = () => redirect("/reset-password");
 
   return (
      <Layout authUser={authUser} setAuthUser={setAuthUser} >
