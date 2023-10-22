@@ -1,4 +1,3 @@
-
 Introducing Culinario: Exploring Wonders from Every Cuisine
 
 In an increasingly interconnected world, the beauty of diverse culinary traditions and flavors has never been more accessible. The web app, Culinario, celebrates this global culinary tapestry with its mission encapsulated in the motto: "Wonders from Every Cuisine."
