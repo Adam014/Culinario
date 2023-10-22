@@ -1,31 +1,27 @@
-import { useState } from "react"
+import { useState } from "react";
 import { sendPasswordResetEmail } from "firebase/auth";
 import { auth } from "../../firebase/firebase";
 import { useNavigate } from "react-router-dom";
 
-const resetPassword = () => {
-    // setting state for error
-    const [error, setError] = useState(null);
-
-    // setting a variable for redirecting
+const ResetPassword = () => {
+    const [email, setEmail] = useState(""); // State to store the email
+const [error, setError] = useState<Error | null>(null);
     const redirect = useNavigate();
 
-    // function for submit reset button
-    const handleSubmit = async(e: React.FormEvent) => {
-        e.preventDefault()
-        const emailValue = e.target.email.value;
-        sendPasswordResetEmail(auth, emailValue)
-        .then(() =>{
-            alert("Check your email inbox")
-        })
-        .catch((error) => {
-            setError(error)
-        });
-    };   
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        
+        try {
+            await sendPasswordResetEmail(auth, email);
+            alert("Check your email inbox");
+        } catch (error) {
+            const err = error as Error; // Type assertion to specify the type
+            setError(err);
+        }
+    };
 
-    // function for getting back on home
     const handleBack = () => {
-        redirect("/")
+        redirect("/");
     }
 
     return (
@@ -35,16 +31,21 @@ const resetPassword = () => {
             </div>
             <h1>Reset Password</h1>
             <div className="email">
-                <form className="forgot-form" onSubmit={(e) => handleSubmit(e)}>
+                <form className="forgot-form" onSubmit={handleSubmit}>
                     <label>Enter email for password reset link<br />
-                        <input type="email" placeholder="Enter your email" name="email"/>
+                        <input
+                            type="email"
+                            placeholder="Enter your email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
                     </label><br />
                     <button className="button">Get link</button>
                 </form>
             </div>
-            { error && {error} }
+            {error && <div>{error.message}</div>}
         </div>
-    )
-}
+    );
+};
 
-export default resetPassword
+export default ResetPassword;

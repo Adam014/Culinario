@@ -8,7 +8,6 @@ import Profile from "./components/profile";
 import ResetPassword from "./components/ResetPasword/resetPassword";
 import Favorites from "./components/Favorites";
 import Recipes from "./components/Recipes";
-import RecipeDetails from "./components/services/recipeDetails";
 
 import { User } from 'firebase/auth';
 import { onAuthStateChanged } from "firebase/auth";

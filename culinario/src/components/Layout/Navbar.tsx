@@ -1,4 +1,4 @@
-import { CulinarioLogo, ProfileIcon, Search } from "../../images/images";
+import { CulinarioLogo, ProfileIcon } from "../../images/images";
 import { User } from "firebase/auth";
 import { getProfileInfo } from '../auth/authUtils';
 import { Link } from "react-router-dom";
