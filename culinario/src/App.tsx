@@ -40,7 +40,6 @@ const App = () => {
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/favorites" element={<Favorites authUser={authUser} setAuthUser={setAuthUser}/>} />
           <Route path="/recipes" element={<Recipes authUser={authUser} setAuthUser={setAuthUser}/>} />
-          <Route path="/recipe/:id" element={<RecipeDetails authUser={authUser} setAuthUser={setAuthUser} />} />
         </Routes>
     </Router>
   )

@@ -55,8 +55,9 @@ const profile: React.FC<ProfileProps> = ({ authUser , setAuthUser } : ProfilePro
         <main className="main">
           {/* add custom card skeleton */}
           {loading ? (
+          
           <div id="container">
-            <div id="square" className="shimmer"></div>
+            <div id="square" className="shimmer"></div> 
             <div id="content">
               <div id="content-title" className="shimmer"></div>
               <div id="content-desc">

@@ -37,12 +37,15 @@ const AllRecipes: React.FC<AllRecipesProps> = ({ simplified }: AllRecipesProps) 
 
   if (isFetching) return "Loading...";
 
+  console.log(recipesList);
+
   return (
     <>
       {!simplified && (
         <div className="search-recipe">
           <Input placeholder="Search recipe, ingredient..." onChange={(e) => setSearchTerm(e.target.value)} />
-        </div>)
+        </div>
+        )
       }
 
       <div className='recipe-card-container'>
@@ -52,6 +55,7 @@ const AllRecipes: React.FC<AllRecipesProps> = ({ simplified }: AllRecipesProps) 
               <div className="recipe-info">
                 <img className="recipe-image" src={recipe.thumbnail_url} alt={recipe.name} />
                 <h2>{recipe.name}</h2>
+                <hr />
                 <div className="rating">
                   <p className="positive-rating">{recipe.user_ratings.count_positive}</p>
                   <img src={ThumbsUp} alt="thumbs-up"/>
