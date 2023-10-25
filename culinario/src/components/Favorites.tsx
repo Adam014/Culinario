@@ -10,9 +10,10 @@ interface FavoritesProps {
 }
 
 const Favorites: React.FC<FavoritesProps> = ({authUser, setAuthUser} : FavoritesProps) => {
+  // getting the favorites from the localStorage and then saving it into var.
   const storedFavorites = localStorage.getItem("favorites");
   const favorites = storedFavorites ? JSON.parse(storedFavorites) : [];
-  console.log(favorites);
+  // console.log(favorites);
 
   // Sort favorites by the 'favoritedAt' timestamp in descending order
   const sortedFavorites = [...favorites]

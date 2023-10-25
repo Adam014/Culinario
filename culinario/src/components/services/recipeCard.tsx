@@ -1,11 +1,12 @@
 import React from 'react';
-import { Recipe } from './allRecipes'; // Adjust the import path as needed
-import { ThumbsUp, Time } from '../../images/images'; // Adjust the import path as needed
+import { Recipe } from './allRecipes'; 
+import { ThumbsUp, Time } from '../../images/images'; 
 import { Link } from 'react-router-dom';
 
 interface RecipeCardProps {
   recipe: Recipe;
 }
+// with this we prevent code duplicity
 
 const RecipeCard: React.FC<RecipeCardProps> = ({ recipe }: RecipeCardProps) => {
   return (
