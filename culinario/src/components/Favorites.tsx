@@ -1,5 +1,6 @@
 import Layout from "./Layout/Layout"
 import { User } from "firebase/auth";
+import { Recipe } from "./services/allRecipes"; 
 
 // passing throught props and defining its types
 interface FavoritesProps {
@@ -8,12 +9,23 @@ interface FavoritesProps {
 }
 
 const Favorites: React.FC<FavoritesProps> = ({authUser, setAuthUser} : FavoritesProps) => {
+  const storedFavorites = localStorage.getItem("favorites");
+  const favorites = storedFavorites ? JSON.parse(storedFavorites) : [];
+  console.log(favorites);
+
   return (
-    // component for showing the favorite recipes
     <Layout authUser={authUser} setAuthUser={setAuthUser}>
-        <main className="main">
-            <h1>Your Favorites Recepies</h1>
-        </main> 
+      <main className="main">
+        <h1>Your Favorites Recipes</h1>
+        <ul>
+          {favorites?.map((recipe: Recipe) => (
+            <li key={recipe.id}>
+              <h2>{recipe.name}</h2>
+              {/* Render other details of the favorite recipe here */}
+            </li>
+          ))}
+        </ul>
+      </main>
     </Layout>
   )
 }

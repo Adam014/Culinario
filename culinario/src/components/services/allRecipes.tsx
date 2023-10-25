@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { ThumbsUp, Time } from "../../images/images";
 
 // Define TypeScript interfaces for better type safety
-interface Recipe {
+export interface Recipe {
   id: number;
   name: string;
   thumbnail_url: string;
@@ -24,8 +24,12 @@ const AllRecipes: React.FC<AllRecipesProps> = ({ simplified }: AllRecipesProps) 
 
   const { data: recipesList, isFetching } = useGetRecipesQuery(count);
   const [searchTerm, setSearchTerm] = useState("");
+  
   // TODO: add a favorite button, so it will appear in Favorite.tsx
-  // const [favorite, setFavorite] = useState(false);
+  const [favorites, setFavorites] = useState<Recipe[]>(() => {
+    const storedFavorites = localStorage.getItem("favorites");
+    return storedFavorites ? JSON.parse(storedFavorites) : [];
+  });
 
   // Memoize the filtered data to avoid unnecessary re-renders
   const filteredData = useMemo(() => {
@@ -37,9 +41,22 @@ const AllRecipes: React.FC<AllRecipesProps> = ({ simplified }: AllRecipesProps) 
     return [];
   }, [recipesList, searchTerm]);
 
-  if (isFetching) return "Loading...";
+  // // Function to add a recipe to favorites
+  const toggleFavorites = (recipe: Recipe) => {
+    if (favorites.some((favRecipe) => favRecipe.id === recipe.id)) {
+      // Recipe is already in favorites, so remove it
+      const updatedFavorites = favorites.filter((favRecipe) => favRecipe.id !== recipe.id);
+      setFavorites(updatedFavorites);
+      localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+    } else {
+      // Recipe is not in favorites, so add it
+      const updatedFavorites = [...favorites, recipe];
+      setFavorites(updatedFavorites);
+      localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+    }
+  };
 
-  console.log(recipesList);
+  if (isFetching) return "Loading...";
 
   // const handleFavorite = () => {
   //   setFavorite(prevstate => !prevstate);
@@ -59,7 +76,7 @@ const AllRecipes: React.FC<AllRecipesProps> = ({ simplified }: AllRecipesProps) 
       <div className='recipe-card-container'>
         {filteredData.map((recipe: Recipe) => (
           <div className="recipe-card" key={recipe.id}>
-            <button>Add to favorites</button>
+            <button onClick={() => toggleFavorites(recipe)}>Add to favorites</button>
             <Link to={`/recipe/${recipe.id}`} key={recipe.id}>
               <div className="recipe-info">
                 <img className="recipe-image" src={recipe.thumbnail_url} alt={recipe.name} />
