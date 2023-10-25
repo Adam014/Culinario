@@ -1,9 +1,7 @@
 import { useState, useMemo } from "react";
 import { useGetRecipesQuery } from "./recipesApi";
 import { Input } from 'antd';
-import { Link } from 'react-router-dom';
-
-import { ThumbsUp, Time } from "../../images/images";
+import RecipeCard from './recipeCard';
 
 // Define TypeScript interfaces for better type safety
 export interface Recipe {
@@ -25,7 +23,7 @@ const AllRecipes: React.FC<AllRecipesProps> = ({ simplified }: AllRecipesProps) 
   const { data: recipesList, isFetching } = useGetRecipesQuery(count);
   const [searchTerm, setSearchTerm] = useState("");
   
-  // TODO: add a favorite button, so it will appear in Favorite.tsx
+  // state for the array of favorites, loading from localStorage
   const [favorites, setFavorites] = useState<Recipe[]>(() => {
     const storedFavorites = localStorage.getItem("favorites");
     return storedFavorites ? JSON.parse(storedFavorites) : [];
@@ -41,28 +39,27 @@ const AllRecipes: React.FC<AllRecipesProps> = ({ simplified }: AllRecipesProps) 
     return [];
   }, [recipesList, searchTerm]);
 
-  // // Function to add a recipe to favorites
+  // function for toggling the recipes into Favorite mode
   const toggleFavorites = (recipe: Recipe) => {
+    // Create a timestamp
+    const timestamp = new Date().getTime();
+    const updatedRecipe = { ...recipe, favoritedAt: timestamp }; // Add favoritedAt property
+
     if (favorites.some((favRecipe) => favRecipe.id === recipe.id)) {
       // Recipe is already in favorites, so remove it
       const updatedFavorites = favorites.filter((favRecipe) => favRecipe.id !== recipe.id);
       setFavorites(updatedFavorites);
       localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
     } else {
-      // Recipe is not in favorites, so add it
-      const updatedFavorites = [...favorites, recipe];
+      // Recipe is not in favorites, so add it with the timestamp
+      const updatedFavorites = [...favorites, updatedRecipe];
       setFavorites(updatedFavorites);
       localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
     }
   };
 
+  // checking if the API data is fetching
   if (isFetching) return "Loading...";
-
-  // const handleFavorite = () => {
-  //   setFavorite(prevstate => !prevstate);
-  // }
-
-  // console.log(favorite);
 
   return (
     <>
@@ -76,22 +73,13 @@ const AllRecipes: React.FC<AllRecipesProps> = ({ simplified }: AllRecipesProps) 
       <div className='recipe-card-container'>
         {filteredData.map((recipe: Recipe) => (
           <div className="recipe-card" key={recipe.id}>
-            <button onClick={() => toggleFavorites(recipe)}>Add to favorites</button>
-            <Link to={`/recipe/${recipe.id}`} key={recipe.id}>
-              <div className="recipe-info">
-                <img className="recipe-image" src={recipe.thumbnail_url} alt={recipe.name} />
-                <h2>{recipe.name}</h2>
-                <hr />
-                <div className="rating">
-                  <p className="positive-rating">{recipe.user_ratings.count_positive}</p>
-                  <img src={ThumbsUp} alt="thumbs-up"/>
-                  <p>{recipe.total_time_tier?.display_tier}</p>
-                  {recipe.total_time_tier?.display_tier && <img src={Time} alt="time" />}
-                </div>
-                <p>{recipe.description}</p>
-                <button className="button">Learn</button>
-              </div>
-            </Link>
+            <button onClick={() => toggleFavorites(recipe)}>
+              {favorites.some((favRecipe) => favRecipe.id === recipe.id)
+                ? "Remove from favorites"
+                : "Add to favorites"
+              }
+            </button>
+            <RecipeCard key={recipe.id} recipe={recipe} />
           </div>
         ))}
       </div>

@@ -1,6 +1,7 @@
 import Layout from "./Layout/Layout"
 import { User } from "firebase/auth";
 import { Recipe } from "./services/allRecipes"; 
+import RecipeCard from './services/recipeCard';
 
 // passing throught props and defining its types
 interface FavoritesProps {
@@ -13,18 +14,20 @@ const Favorites: React.FC<FavoritesProps> = ({authUser, setAuthUser} : Favorites
   const favorites = storedFavorites ? JSON.parse(storedFavorites) : [];
   console.log(favorites);
 
+  // Sort favorites by the 'favoritedAt' timestamp in descending order
+  const sortedFavorites = [...favorites]
+    .filter(recipe => typeof recipe.favoritedAt === 'number')
+    .sort((a, b) => b.favoritedAt - a.favoritedAt);
+
   return (
     <Layout authUser={authUser} setAuthUser={setAuthUser}>
       <main className="main">
         <h1>Your Favorites Recipes</h1>
-        <ul>
-          {favorites?.map((recipe: Recipe) => (
-            <li key={recipe.id}>
-              <h2>{recipe.name}</h2>
-              {/* Render other details of the favorite recipe here */}
-            </li>
+        <div className='recipe-card-container'>
+          {sortedFavorites?.map((recipe: Recipe) => (
+            <RecipeCard key={recipe.id} recipe={recipe} />
           ))}
-        </ul>
+        </div>
       </main>
     </Layout>
   )
