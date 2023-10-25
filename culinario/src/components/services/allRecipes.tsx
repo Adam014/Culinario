@@ -13,14 +13,19 @@ export interface Recipe {
   total_time_tier: { display_tier: string };
 }
 
+// passing the simplified through props
 interface AllRecipesProps {
   simplified: boolean;
 }
 
 const AllRecipes: React.FC<AllRecipesProps> = ({ simplified }: AllRecipesProps) => {
+  // checking and setting the count by simplified = true/false, on homepage true, on recipes false
   const count = simplified ? 10 : 40;
 
+  // fetching the data from custom query
   const { data: recipesList, isFetching } = useGetRecipesQuery(count);
+
+  // state for the searchTerm in searchBar
   const [searchTerm, setSearchTerm] = useState("");
   
   // state for the array of favorites, loading from localStorage
@@ -63,6 +68,7 @@ const AllRecipes: React.FC<AllRecipesProps> = ({ simplified }: AllRecipesProps) 
 
   return (
     <>
+      {/* checking if simplifed is false, if is, search bar will show */}
       {!simplified && (
         <div className="search-recipe">
           <Input placeholder="Search recipe, ingredient..." onChange={(e) => setSearchTerm(e.target.value)} />
@@ -79,6 +85,7 @@ const AllRecipes: React.FC<AllRecipesProps> = ({ simplified }: AllRecipesProps) 
                 : "Add to favorites"
               }
             </button>
+            {/* custom component */}
             <RecipeCard key={recipe.id} recipe={recipe} />
           </div>
         ))}

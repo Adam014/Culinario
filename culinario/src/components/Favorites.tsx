@@ -26,6 +26,7 @@ const Favorites: React.FC<FavoritesProps> = ({authUser, setAuthUser} : Favorites
         <h1>Your Favorites Recipes</h1>
         <div className='recipe-card-container'>
           {sortedFavorites?.map((recipe: Recipe) => (
+            // custom component
             <RecipeCard key={recipe.id} recipe={recipe} />
           ))}
         </div>
