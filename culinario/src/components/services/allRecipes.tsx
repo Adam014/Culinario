@@ -24,6 +24,8 @@ const AllRecipes: React.FC<AllRecipesProps> = ({ simplified }: AllRecipesProps) 
 
   const { data: recipesList, isFetching } = useGetRecipesQuery(count);
   const [searchTerm, setSearchTerm] = useState("");
+  // TODO: add a favorite button, so it will appear in Favorite.tsx
+  // const [favorite, setFavorite] = useState(false);
 
   // Memoize the filtered data to avoid unnecessary re-renders
   const filteredData = useMemo(() => {
@@ -39,6 +41,12 @@ const AllRecipes: React.FC<AllRecipesProps> = ({ simplified }: AllRecipesProps) 
 
   console.log(recipesList);
 
+  // const handleFavorite = () => {
+  //   setFavorite(prevstate => !prevstate);
+  // }
+
+  // console.log(favorite);
+
   return (
     <>
       {!simplified && (
@@ -51,6 +59,7 @@ const AllRecipes: React.FC<AllRecipesProps> = ({ simplified }: AllRecipesProps) 
       <div className='recipe-card-container'>
         {filteredData.map((recipe: Recipe) => (
           <div className="recipe-card" key={recipe.id}>
+            <button>Add to favorites</button>
             <Link to={`/recipe/${recipe.id}`} key={recipe.id}>
               <div className="recipe-info">
                 <img className="recipe-image" src={recipe.thumbnail_url} alt={recipe.name} />
