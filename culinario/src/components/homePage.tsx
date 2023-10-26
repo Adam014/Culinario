@@ -2,7 +2,7 @@ import { User } from "firebase/auth";
 import Layout from "./Layout/Layout";
 import { getProfileInfo } from './auth/authUtils';
 
-import { useGetRecipesQuery } from "./services/recipesApi";
+import { useGetRecipesQuery } from "./services/api/recipesApi";
 import { Link } from "react-router-dom";
 import AllRecipes from "./services/allRecipes";
 

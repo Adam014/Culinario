@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 
-import { recipesApi } from "../services/recipesApi";
+import { recipesApi } from "../services/api/recipesApi";
 
 export default configureStore({
     reducer: {
