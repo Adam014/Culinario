@@ -81,8 +81,8 @@ const AllRecipes: React.FC<AllRecipesProps> = ({ simplified }: AllRecipesProps) 
             {/* add a hearth icon instead of a classic button */}
             <button onClick={() => toggleFavorites(recipe)} className='button-favorite'>
               {favorites.some((favRecipe) => favRecipe.id === recipe.id)
-                ? "Remove from favorites"
-                : "Add to favorites"
+                ? <i className="fa-solid fa-heart remove-favorite"></i>
+                : <i className="fa-regular fa-heart add-favorite"></i>
               }
             </button>
             {/* custom component */}
