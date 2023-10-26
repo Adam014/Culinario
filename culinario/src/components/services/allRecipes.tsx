@@ -71,7 +71,7 @@ const AllRecipes: React.FC<AllRecipesProps> = ({ simplified }: AllRecipesProps) 
       {/* checking if simplifed is false, if is, search bar will show */}
       {!simplified && (
         <div className="search-recipe">
-          <Input placeholder="Search recipe, ingredient..." onChange={(e) => setSearchTerm(e.target.value)} />
+          <input placeholder="Search recipe, ingredient..." onChange={(e) => setSearchTerm(e.target.value)} />
         </div>
         )
       }
