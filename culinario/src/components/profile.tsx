@@ -52,7 +52,7 @@ const profile: React.FC<ProfileProps> = ({ authUser , setAuthUser } : ProfilePro
 
   return (
      <Layout authUser={authUser} setAuthUser={setAuthUser} >
-        <main className="main">
+        <main className="profile">
           {/* add custom card skeleton */}
           {loading ? (
           
@@ -72,12 +72,13 @@ const profile: React.FC<ProfileProps> = ({ authUser , setAuthUser } : ProfilePro
           <>
             <div className="title-text">
               <h1>Your Profile</h1>
-              <h4 onClick={handleReset}>Reset your password here</h4>
+              <h4 onClick={handleReset} className="reset-passwd">Reset your password here</h4>
             </div>
             <div className="default-user-info">
-
-              {/* cleaner code, saving everything to variables */}
-              <img src={imgSrc || ProfileIcon} alt="profile-picture" />
+              <div className="profile-img-container">
+                {/* cleaner code, saving everything to variables */}
+                <img src={imgSrc || ProfileIcon} alt="profile-picture" />
+              </div>
 
               <div className="title-user-info">
                 {authUser?.displayName && <h2>{authUser?.providerData && authUser?.providerData.length > 0 && authUser?.providerData[0].providerId === "google.com" || "github-com" ? `${authUser?.displayName}` : `${authUser?.email}`}</h2>}
@@ -87,7 +88,7 @@ const profile: React.FC<ProfileProps> = ({ authUser , setAuthUser } : ProfilePro
                 <p>Provider: {authUser?.providerData[0].providerId}</p>
               </div>
             </div>
-            <h3>Last login: {lastSignInTime}</h3>
+            <h3 className="last-login">Last login: {lastSignInTime}</h3>
           </>
         )}
         </main>

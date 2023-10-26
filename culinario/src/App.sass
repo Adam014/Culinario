@@ -232,6 +232,7 @@ input[type="password"]
             font-size: 1.4rem
             opacity: 0.7
 
+
         .home-container, .favorite-container, .recipes-container
             padding: 10px 35px 10px 35px
             display: flex   
@@ -334,7 +335,8 @@ input[type="password"]
     padding: 50px
     grid-area: main
     h1, h3
-        padding: 30px
+        padding: 10px
+        width: 100%
 
     .title-text
         display: flex
@@ -344,9 +346,13 @@ input[type="password"]
             padding-right: 20px
             cursor: pointer
             transition: .15s ease-in
+
             &:hover
                 color: $gold
                 text-decoration: underline
+
+    .profile-img-container
+        padding: 20px
 
     .default-user-info
         padding: 30px
@@ -528,6 +534,11 @@ input[type="password"]
                         width: 1.4rem
                         height: 1.4rem
 
+
+
+.reset-pawwd
+    font-size: 2vw
+
 .search-recipe
     input
         background: transparent
@@ -556,7 +567,8 @@ input[type="password"]
         &.remove-favorite
             color: $gold
 
-// do responsive under 1000px
+.profile
+    @extend .main
 
 @media (max-width: 1000px)
     .aside  
@@ -566,3 +578,32 @@ input[type="password"]
     .showing-sidebar-btn
         display: block
         position: absolute
+    .profile
+        padding: 0px
+    .last-login
+        font-size: 3.5vw
+    .profile-container
+        p
+            font-size: 2.5vw
+    .main
+        h1, h3
+            font-size: 5vw
+    .title-text
+        h4
+            font-size: 2vw
+    .footer-container
+        p
+            text-align: center
+
+@media (max-width: 700px)
+    .default-user-info
+        display: block !important
+        padding: 0px !important
+        .title-user-info
+            padding: 10px 0px 0px 15px !important
+    .profile-img-container
+        display: flex
+        width: 100%
+        justify-content: center
+    .last-login
+        padding-left: 5px
