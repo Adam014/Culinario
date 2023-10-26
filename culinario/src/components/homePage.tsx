@@ -35,6 +35,8 @@ const homePage: React.FC<HomeDetailsProps> = ({ authUser, setAuthUser } : HomeDe
   return (
     <Layout authUser={authUser} setAuthUser={setAuthUser} >
       <main className="main">
+        {/* TODO: add a sidebar showing button */}
+        {/* <button className="showing-sidebar-btn" style={{display: 'none'}}>Show sidebar</button> */}
         <div className="welcome-title">
           {/* cleaner code, saving everything to variables, importing from authUtils */}
           <h1>Welcome back, {name}</h1>

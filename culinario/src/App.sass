@@ -556,5 +556,13 @@ input[type="password"]
         &.remove-favorite
             color: $gold
 
-    .fa-regular
-        
+// do responsive under 1000px
+
+@media (max-width: 1000px)
+    .aside  
+        display: none
+    .recipes-page-container
+        grid-template-areas: "navbar navbar navbar" "main main main" "main main main"
+    .showing-sidebar-btn
+        display: block
+        position: absolute
