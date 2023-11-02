@@ -8,6 +8,8 @@ const tastyApiHeader = {
 
 const createRequest = (url: string) => ({ url, headers: tastyApiHeader });
 
+// TODO: maybe transfer the data to db? and save them there, and then load them from the db instead straight from api
+
 export const recipesApi = createApi({
     reducerPath: 'recipesApi',
     baseQuery: fetchBaseQuery({ baseUrl: API_BASE_URL }),

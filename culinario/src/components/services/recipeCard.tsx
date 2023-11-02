@@ -6,10 +6,10 @@ import { Link } from 'react-router-dom';
 interface RecipeCardProps {
   recipe: Recipe;
 }
-// with this we prevent code duplicity
 
 // TODO: remove the code for favorites here
 // Add the favorite button over the thumbnail
+// save the favorite to db instead of localStorage
 
 const RecipeCard: React.FC<RecipeCardProps> = ({ recipe }: RecipeCardProps) => {
   return (
