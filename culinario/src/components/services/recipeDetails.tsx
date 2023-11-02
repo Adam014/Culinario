@@ -4,7 +4,7 @@
 const recipeDetails = () => {
     return (
         <div>
-
+            
         </div>
     )
 }

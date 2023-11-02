@@ -68,10 +68,11 @@ const AllRecipes: React.FC<AllRecipesProps> = ({ simplified }: AllRecipesProps) 
   return (
     <>
       {/* checking if simplifed is false, if is, search bar will show */}
+      {/* TODO: create a custom component for search */}
       {!simplified && (
-        <div className="search-recipe">
-          <input placeholder="Search recipe, ingredient..." onChange={(e) => setSearchTerm(e.target.value)} />
-        </div>
+          <div className="search-recipe">
+              <input placeholder="Search recipe, ingredient..." onChange={(e) => setSearchTerm(e.target.value)} />
+          </div>
         )
       }
 
