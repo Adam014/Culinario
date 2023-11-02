@@ -8,6 +8,9 @@ interface RecipeCardProps {
 }
 // with this we prevent code duplicity
 
+// TODO: remove the code for favorites here
+// Add the favorite button over the thumbnail
+
 const RecipeCard: React.FC<RecipeCardProps> = ({ recipe }: RecipeCardProps) => {
   return (
     <div className="recipe-card">
@@ -15,7 +18,7 @@ const RecipeCard: React.FC<RecipeCardProps> = ({ recipe }: RecipeCardProps) => {
         <div className="recipe-info">
           <img className="recipe-image" src={recipe.thumbnail_url} alt={recipe.name} />
           <h2>{recipe.name}</h2>
-          <hr />
+          {/* <hr /> */}
           <div className="rating">
             <p className="positive-rating">{recipe.user_ratings.count_positive}</p>
             <img src={ThumbsUp} alt="thumbs-up" />
