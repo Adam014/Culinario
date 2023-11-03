@@ -18,7 +18,7 @@ export const recipesApi = createApi({
             query: (count: number) => createRequest(`/recipes/list?from=0&size=${count}`),
         }),
         getRecipeById: builder.query({
-            query: (id: number) => createRequest(`/recipes/${id}`), 
+            query: (id: number) => createRequest(`/recipe/${id}`), 
         }),
     }),
 });
