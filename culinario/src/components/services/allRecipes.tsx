@@ -2,6 +2,8 @@ import { useState, useMemo } from "react";
 import { useGetRecipesQuery } from "./api/recipesApi";
 import RecipeCard from './recipeCard';
 
+import Search from "../Search";
+
 // Define TypeScript interfaces for better type safety
 export interface Recipe {
   id: number;
@@ -21,22 +23,22 @@ const AllRecipes: React.FC<AllRecipesProps> = ({ simplified }: AllRecipesProps) 
   // checking and setting the count by simplified = true/false, on homepage true, on recipes false
   const count = simplified ? 10 : 40;
 
-  // fetching the data from custom query
-  const { data: recipesList, isFetching } = useGetRecipesQuery(count);
-
   // state for the searchTerm in searchBar
   const [searchTerm, setSearchTerm] = useState("");
+
+  // fetching the data from custom query
+  const { data: recipesList, isFetching } = useGetRecipesQuery(count);
 
   // Memoize the filtered data to avoid unnecessary re-renders
   const filteredData = useMemo(() => {
     if (recipesList) {
       return recipesList.results.filter((recipe: Recipe) =>
-        recipe.name.toLowerCase().includes(searchTerm.toLowerCase())
+        recipe.name.toLowerCase().includes(searchTerm?.toLowerCase())
       );
     }
     return [];
   }, [recipesList, searchTerm]);
-
+  
   // checking if the API data is fetching
   if (isFetching) return "Loading...";
 
@@ -45,9 +47,7 @@ const AllRecipes: React.FC<AllRecipesProps> = ({ simplified }: AllRecipesProps) 
       {/* checking if simplifed is false, if is, search bar will show */}
       {/* TODO: create a custom component for search */}
       {!simplified && (
-          <div className="search-recipe">
-              <input placeholder="Search recipe, ingredient..." onChange={(e) => setSearchTerm(e.target.value)} />
-          </div>
+          <Search setSearchTerm={setSearchTerm}/>
         )
       }
 

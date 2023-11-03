@@ -7,8 +7,6 @@ interface RecipeCardProps {
   recipe: Recipe;
 }
 
-// TODO: remove the code for favorites here
-// Add the favorite button over the thumbnail
 // save the favorite to db instead of localStorage
 
 const RecipeCard: React.FC<RecipeCardProps> = ({ recipe }: RecipeCardProps) => {
