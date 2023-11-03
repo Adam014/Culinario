@@ -4,8 +4,6 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { OpenEye, ClosedEye } from "../../images/images";
 
 const SignUp = () => {
-    // fix it maybe for one variables - fixing duplicity
-
     // setting the state for email
     const [email, setEmail] = useState('');
 

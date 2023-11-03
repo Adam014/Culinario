@@ -12,6 +12,7 @@ import Recipes from "./components/Recipes";
 import { User } from 'firebase/auth';
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase/firebase";
+import RecipeDetails from "./components/services/recipeDetails";
 
 const App = () => {
   // setting the state for user information
@@ -39,6 +40,7 @@ const App = () => {
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/favorites" element={<Favorites authUser={authUser} setAuthUser={setAuthUser}/>} />
           <Route path="/recipes" element={<Recipes authUser={authUser} setAuthUser={setAuthUser}/>} />
+          <Route path="/recipe/:id" element={<RecipeDetails authUser={authUser} setAuthUser={setAuthUser}/>} />
         </Routes>
     </Router>
   )

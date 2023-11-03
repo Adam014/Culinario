@@ -1,11 +1,17 @@
-// import Layout from '../Layout/Layout';
-// import { User } from 'firebase/auth';
+import React from "react";
+import Layout from '../Layout/Layout';
+import { User } from 'firebase/auth';
 
-const recipeDetails = () => {
+interface RecipeDetailsProps {
+    authUser: User | null; 
+    setAuthUser: React.Dispatch<React.SetStateAction<User | null>>;
+  }
+
+const recipeDetails: React.FC<RecipeDetailsProps> = ({ authUser, setAuthUser }) => {
     return (
-        <div>
+        <Layout authUser={authUser} setAuthUser={setAuthUser}>
             
-        </div>
+        </Layout>
     )
 }
 
