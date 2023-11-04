@@ -1,37 +1,32 @@
-import Layout from "./Layout/Layout"
+import Layout from "./Layout/Layout";
 import { User } from "firebase/auth";
-import { Recipe } from "./services/allRecipes"; 
+import { Recipe } from "./services/allRecipes";
 import RecipeCard from './services/recipeCard';
+import { getFavoriteRecipesData } from '../utils/db';
 
-// passing throught props and defining its types
+// Define the props interface
 interface FavoritesProps {
-  authUser: User | null; 
+  authUser: User | null;
   setAuthUser: React.Dispatch<React.SetStateAction<User | null>>;
 }
 
-const Favorites: React.FC<FavoritesProps> = ({authUser, setAuthUser} : FavoritesProps) => {
-  // getting the favorites from the localStorage and then saving it into var.
-
-  // console.log(favorites);
-
-  // Sort favorites by the 'favoritedAt' timestamp in descending order
-  // const sortedFavorites = [...favorites]
-  //   .filter(recipe => typeof recipe.favoritedAt === 'number')
-  //   .sort((a, b) => b.favoritedAt - a.favoritedAt);
+const Favorites: React.FC<FavoritesProps> = ({ authUser, setAuthUser }: FavoritesProps) => {
+  // Get the favorite recipes data
+  const favorites = getFavoriteRecipesData();
+  console.log(favorites)
 
   return (
     <Layout authUser={authUser} setAuthUser={setAuthUser}>
       <main className="main">
-        <h1>Your Favorites Recipes</h1>
+        <h1>Your Favorite Recipes</h1>
         <div className='recipe-card-container'>
-          {/* {sortedFavorites?.map((recipe: Recipe) => (
-            // custom component
-            <RecipeCard key={recipe.id} recipe={recipe} />
-          ))} */}
+          {favorites.map((favoriteRecipe) => (
+            <RecipeCard key={favoriteRecipe.id} recipe={favoriteRecipe.recipe} />
+          ))}
         </div>
       </main>
     </Layout>
-  )
-}
+  );
+};
 
-export default Favorites
+export default Favorites;

@@ -10,10 +10,11 @@ interface RecipeCardProps {
 }
 
 const RecipeCard: React.FC<RecipeCardProps> = ({ recipe }: RecipeCardProps) => {
+
   const [isFavorite, setIsFavorite] = useState<boolean | undefined>(undefined);
 
   const checkIfFavorite = async () => {
-    const q = query(favoriteRecipesCollection, where("recipeId", "==", recipe.id));
+    const q = query(favoriteRecipesCollection, where("recipe.id", "==", recipe.id));
     const querySnapshot = await getDocs(q);
     setIsFavorite(!querySnapshot.empty);
   };
@@ -21,26 +22,26 @@ const RecipeCard: React.FC<RecipeCardProps> = ({ recipe }: RecipeCardProps) => {
   const toggleFavorite = async () => {
     if (isFavorite) {
       // Remove the recipe from favorites
-      const q = query(favoriteRecipesCollection, where("recipeId", "==", recipe.id));
+      const q = query(favoriteRecipesCollection, where("recipe.id", "==", recipe.id));
       const querySnapshot = await getDocs(q);
       querySnapshot.forEach(async (doc) => {
         await deleteDoc(doc.ref);
       });
-      setIsFavorite(false);
     } else {
       // Add the recipe to favorites
       const docRef = await addDoc(favoriteRecipesCollection, {
-        recipeId: recipe.id,
-        name: recipe.name,
+        recipe: recipe, // Save the entire recipe
         favoritedAt: new Date().getTime(),
       });
-      setIsFavorite(true);
     }
+
+    // Update the local state after the Firestore operation is completed
+    setIsFavorite(!isFavorite);
   };
 
   useEffect(() => {
-    checkIfFavorite();
-  }, []);
+    checkIfFavorite(); // Check if the recipe is a favorite when the component mounts
+  }, []); // The empty dependency array ensures this effect only runs once
 
   return (
     <div className='recipe-card'>
