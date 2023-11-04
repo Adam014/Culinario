@@ -22,4 +22,4 @@ export const providerGoogle = new GoogleAuthProvider();
 export const providerGitHub = new GithubAuthProvider();
 
 // exporting variables for collections
-export const favoriteRecipes = collection(db, "favoriteRecipes");
+export const favoriteRecipesCollection = collection(db, "favoriteRecipes");
