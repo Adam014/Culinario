@@ -1,6 +1,5 @@
 import Layout from "./Layout/Layout";
 import { User } from "firebase/auth";
-import { Recipe } from "./services/allRecipes";
 import RecipeCard from './services/recipeCard';
 import { getFavoriteRecipesData } from '../utils/db';
 

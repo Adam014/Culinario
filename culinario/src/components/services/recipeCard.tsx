@@ -29,10 +29,11 @@ const RecipeCard: React.FC<RecipeCardProps> = ({ recipe }: RecipeCardProps) => {
       });
     } else {
       // Add the recipe to favorites
-      const docRef = await addDoc(favoriteRecipesCollection, {
+      await addDoc(favoriteRecipesCollection, {
         recipe: recipe, // Save the entire recipe
         favoritedAt: new Date().getTime(),
       });
+      
     }
 
     // Update the local state after the Firestore operation is completed
