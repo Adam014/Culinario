@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider, GithubAuthProvider } from 'firebase/auth';
+import { getFirestore, collection } from "firebase/firestore"
 
 // firebase config
 const firebaseConfig = {
@@ -14,8 +15,11 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
+export const db = getFirestore(app);
 
 // exporting the providers
 export const providerGoogle = new GoogleAuthProvider();
 export const providerGitHub = new GithubAuthProvider();
 
+// exporting variables for collections
+export const favoriteRecipes = collection(db, "favoriteRecipes");
