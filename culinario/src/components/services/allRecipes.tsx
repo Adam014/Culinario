@@ -1,6 +1,7 @@
 import { useState, useMemo } from "react";
 import { useGetRecipesQuery } from "./api/recipesApi";
 import RecipeCard from './recipeCard';
+import { User } from "firebase/auth";
 
 import Search from "../Search";
 
@@ -17,9 +18,10 @@ export interface Recipe {
 // passing the simplified through props
 interface AllRecipesProps {
   simplified: boolean;
+  authUser: User | null
 }
 
-const AllRecipes: React.FC<AllRecipesProps> = ({ simplified }: AllRecipesProps) => {
+const AllRecipes: React.FC<AllRecipesProps> = ({ simplified, authUser }: AllRecipesProps) => {
   // checking and setting the count by simplified = true/false, on homepage true, on recipes false
   const count = simplified ? 10 : 40;
 
@@ -45,7 +47,6 @@ const AllRecipes: React.FC<AllRecipesProps> = ({ simplified }: AllRecipesProps) 
   return (
     <>
       {/* checking if simplifed is false, if is, search bar will show */}
-      {/* TODO: create a custom component for search */}
       {!simplified && (
           <Search setSearchTerm={setSearchTerm}/>
         )
