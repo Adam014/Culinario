@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Layout from "./Layout/Layout";
 import { User } from "firebase/auth";
 import RecipeCard from './services/recipeCard';
-import { getFavoriteRecipesData } from '../utils/db';
+import { getFavoriteRecipesData, FavoriteRecipe } from '../utils/db';
 
 // Define the props interface
 interface FavoritesProps {
@@ -12,10 +12,18 @@ interface FavoritesProps {
 
 const Favorites: React.FC<FavoritesProps> = ({ authUser, setAuthUser }: FavoritesProps) => {
   // Get the favorite recipes data
+  const [favorites, setFavorites] = useState<FavoriteRecipe[]>([]);
+
   const userUid = authUser?.uid || null;
 
-  const favoritesArray = getFavoriteRecipesData(userUid);
-  console.log(favoritesArray)
+  const fetchFavoriteRecipes = async () => {
+    const favoritesArray = await getFavoriteRecipesData(userUid);
+    setFavorites(favoritesArray);
+  };
+
+  console.log(favorites)
+
+  fetchFavoriteRecipes();
 
   return (
     <Layout authUser={authUser} setAuthUser={setAuthUser}>
@@ -23,6 +31,9 @@ const Favorites: React.FC<FavoritesProps> = ({ authUser, setAuthUser }: Favorite
         <h1>Your Favorite Recipes</h1>
         <div className='recipe-card-container'>
           {/* mapping here */}
+          {favorites.map((recipe) => (
+            <RecipeCard key={recipe.id} recipe={recipe.recipe} authUser={authUser}/>
+          ))}
         </div>
       </main>
     </Layout>
