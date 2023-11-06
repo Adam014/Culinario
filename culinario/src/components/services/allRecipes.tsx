@@ -56,7 +56,7 @@ const AllRecipes: React.FC<AllRecipesProps> = ({ simplified, authUser }: AllReci
         {filteredData.map((recipe: Recipe) => (
           <div className="recipe-card" key={recipe.id}>
             {/* custom component */}
-            <RecipeCard key={recipe.id} recipe={recipe} />
+            <RecipeCard key={recipe.id} recipe={recipe} authUser={authUser}/>
           </div>
         ))}
       </div>

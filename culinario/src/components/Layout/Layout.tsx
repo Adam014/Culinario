@@ -3,7 +3,6 @@ import { useState } from "react";
 import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
 import { User } from "firebase/auth";
-import AnimatedCursor from "react-animated-cursor";
 
 // passing throught props and defining its types
 interface LayoutProps {
@@ -30,7 +29,6 @@ const Layout: React.FC<LayoutProps> = ({children, authUser, setAuthUser,}: Layou
     return (
       // layout for the components
       <div className="recipes-page-container">
-        <AnimatedCursor color='241, 135, 6'/>
         <Navbar authUser={authUser} handleTabClick={handleTabClick}/>
         <Sidebar authUser={authUser} setAuthUser={setAuthUser} setActiveTab={setActiveTab} activeTab={activeTab} handleTabClick={handleTabClick}/>
         {children}

@@ -14,6 +14,8 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase/firebase";
 import RecipeDetails from "./components/services/recipeDetails";
 
+import AnimatedCursor from "react-animated-cursor";
+
 const App = () => {
   // setting the state for user information
   const [authUser, setAuthUser] = useState<User | null>(null);
@@ -34,6 +36,7 @@ const App = () => {
 
   return (
     <Router>
+        <AnimatedCursor color='241, 135, 6'/>
         <Routes>
           <Route path="/" element={authUser ? <Home authUser={authUser} setAuthUser={setAuthUser} /> : <AuthDetails setAuthUser={setAuthUser} authUser={authUser}/>} />
           <Route path="/profile" element={<Profile authUser={authUser} setAuthUser={setAuthUser} />} />

@@ -20,7 +20,7 @@ const Favorites: React.FC<FavoritesProps> = ({ authUser, setAuthUser }: Favorite
         <h1>Your Favorite Recipes</h1>
         <div className='recipe-card-container'>
           {favorites.map((favoriteRecipe) => (
-            <RecipeCard key={favoriteRecipe.id} recipe={favoriteRecipe.recipe} />
+            <RecipeCard key={favoriteRecipe.id} recipe={favoriteRecipe.recipe} authUser={authUser}/>
           ))}
         </div>
       </main>

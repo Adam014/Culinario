@@ -4,12 +4,14 @@ import { ThumbsUp, Time } from '../../images/images';
 import { Link } from 'react-router-dom';
 import { deleteDoc, addDoc, query, where, getDocs } from 'firebase/firestore';
 import { favoriteRecipesCollection } from '../../firebase/firebase';
+import { User } from 'firebase/auth';
 
 interface RecipeCardProps {
   recipe: Recipe;
+  authUser: User | null;
 }
 
-const RecipeCard: React.FC<RecipeCardProps> = ({ recipe }: RecipeCardProps) => {
+const RecipeCard: React.FC<RecipeCardProps> = ({ recipe, authUser }: RecipeCardProps) => {
 
   const [isFavorite, setIsFavorite] = useState<boolean | undefined>(undefined);
 
@@ -22,7 +24,7 @@ const RecipeCard: React.FC<RecipeCardProps> = ({ recipe }: RecipeCardProps) => {
   const toggleFavorite = async () => {
     if (isFavorite) {
       // Remove the recipe from favorites
-      const q = query(favoriteRecipesCollection, where("recipe.id", "==", recipe.id));
+      const q = query(favoriteRecipesCollection, where("recipe.id", "==", recipe.id), where("user.uid", "==", authUser?.uid));
       const querySnapshot = await getDocs(q);
       querySnapshot.forEach(async (doc) => {
         await deleteDoc(doc.ref);
