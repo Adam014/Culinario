@@ -42,7 +42,7 @@ const homePage: React.FC<HomeDetailsProps> = ({ authUser, setAuthUser } : HomeDe
           <h1>Welcome back, {name}</h1>
           <h3>What are you cooking today?</h3>
           <h4 className="show-more-link"><Link to="/recipes">Show more</Link></h4>
-          <AllRecipes simplified={true} />
+          <AllRecipes simplified={true} authUser={authUser}/>
         </div>
       </main>
     </Layout>

@@ -12,7 +12,7 @@ interface FavoritesProps {
 const Favorites: React.FC<FavoritesProps> = ({ authUser, setAuthUser }: FavoritesProps) => {
   // Get the favorite recipes data
   const favorites = getFavoriteRecipesData();
-  console.log(favorites)
+  // console.log(favorites)
 
   return (
     <Layout authUser={authUser} setAuthUser={setAuthUser}>

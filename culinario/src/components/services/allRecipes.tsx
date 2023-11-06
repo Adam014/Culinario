@@ -43,7 +43,6 @@ const AllRecipes: React.FC<AllRecipesProps> = ({ simplified, authUser }: AllReci
   
   // checking if the API data is fetching
   if (isFetching) return "Loading...";
-
   return (
     <>
       {/* checking if simplifed is false, if is, search bar will show */}

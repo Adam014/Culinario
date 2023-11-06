@@ -9,7 +9,6 @@ interface RecipesProps {
 }
 
 const Recipes: React.FC<RecipesProps> = ({ authUser, setAuthUser } : RecipesProps) => {
-
   return (
     <Layout authUser={authUser} setAuthUser={setAuthUser}>
         <main className="main">

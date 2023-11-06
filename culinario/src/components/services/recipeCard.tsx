@@ -2,7 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { Recipe } from './allRecipes';
 import { ThumbsUp, Time } from '../../images/images';
 import { Link } from 'react-router-dom';
-import { deleteDoc, addDoc, query, where, getDocs } from 'firebase/firestore';
+import { 
+  deleteDoc, 
+  addDoc, 
+  query, 
+  where, 
+  getDocs, 
+  getDoc, 
+  setDoc, 
+  collection, 
+  doc } 
+from 'firebase/firestore';
 import { favoriteRecipesCollection } from '../../firebase/firebase';
 import { User } from 'firebase/auth';
 
@@ -22,24 +32,44 @@ const RecipeCard: React.FC<RecipeCardProps> = ({ recipe, authUser }: RecipeCardP
   };
 
   const toggleFavorite = async () => {
-    if (isFavorite) {
-      // Remove the recipe from favorites
-      const q = query(favoriteRecipesCollection, where("recipe.id", "==", recipe.id), where("user.uid", "==", authUser?.uid));
-      const querySnapshot = await getDocs(q);
+    if (!authUser) {
+      // User is not authenticated, handle this case (e.g., show a message)
+      return;
+    }
+
+    const userUid = authUser.uid;
+
+    const userFavoritesCollection = collection(favoriteRecipesCollection, userUid, 'favoriteRecipes');
+
+    const q = query(
+      userFavoritesCollection,
+      where("recipe.id", "==", recipe.id)
+    );
+    const querySnapshot = await getDocs(q);
+
+    if (!querySnapshot.empty) {
+      // The recipe is already a favorite, so remove it
       querySnapshot.forEach(async (doc) => {
         await deleteDoc(doc.ref);
       });
+      setIsFavorite(false);
     } else {
-      // Add the recipe to favorites
-      await addDoc(favoriteRecipesCollection, {
+      // Check if the user's collection exists and create it if it doesn't
+      const userDocRef = doc(favoriteRecipesCollection, userUid);
+      const userDocSnapshot = await getDoc(userDocRef);
+
+      if (!userDocSnapshot.exists()) {
+        // Create the user's collection if it doesn't exist
+        await setDoc(userDocRef, {});
+      }
+
+      // Add the recipe to favorites for the current user
+      await addDoc(userFavoritesCollection, {
         recipe: recipe, // Save the entire recipe
         favoritedAt: new Date().getTime(),
       });
-      
+      setIsFavorite(true);
     }
-
-    // Update the local state after the Firestore operation is completed
-    setIsFavorite(!isFavorite);
   };
 
   useEffect(() => {
