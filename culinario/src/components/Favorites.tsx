@@ -11,7 +11,9 @@ interface FavoritesProps {
 
 const Favorites: React.FC<FavoritesProps> = ({ authUser, setAuthUser }: FavoritesProps) => {
   // Get the favorite recipes data
-  const favorites = getFavoriteRecipesData();
+  const userUid = authUser?.uid || null;
+
+  const favorites = getFavoriteRecipesData(userUid);
   // console.log(favorites)
 
   return (

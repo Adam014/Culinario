@@ -8,6 +8,8 @@ interface RecipeDetailsProps {
   }
 
 const recipeDetails: React.FC<RecipeDetailsProps> = ({ authUser, setAuthUser }) => {
+    console.log();
+
     return (
         <Layout authUser={authUser} setAuthUser={setAuthUser}>
             
