@@ -2,17 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Recipe } from './allRecipes';
 import { ThumbsUp, Time } from '../../images/images';
 import { Link } from 'react-router-dom';
-import { 
-  deleteDoc, 
-  addDoc, 
-  query, 
-  where, 
-  getDocs, 
-  getDoc, 
-  setDoc, 
-  collection, 
-  doc } 
-from 'firebase/firestore';
+import { deleteDoc, addDoc, query, where, getDocs, getDoc, setDoc, collection, doc } from 'firebase/firestore';
 import { favoriteRecipesCollection } from '../../firebase/firebase';
 import { User } from 'firebase/auth';
 
@@ -22,13 +12,16 @@ interface RecipeCardProps {
 }
 
 const RecipeCard: React.FC<RecipeCardProps> = ({ recipe, authUser }: RecipeCardProps) => {
-
   const [isFavorite, setIsFavorite] = useState<boolean | undefined>(undefined);
 
   const checkIfFavorite = async () => {
-    const q = query(favoriteRecipesCollection, where("recipe.id", "==", recipe.id));
-    const querySnapshot = await getDocs(q);
-    setIsFavorite(!querySnapshot.empty);
+    if (authUser) {
+      const userUid = authUser.uid;
+      const userFavoritesCollection = collection(favoriteRecipesCollection, userUid, 'favoriteRecipes');
+      const q = query(userFavoritesCollection, where("recipe.id", "==", recipe.id));
+      const querySnapshot = await getDocs(q);
+      setIsFavorite(!querySnapshot.empty);
+    }
   };
 
   const toggleFavorite = async () => {
@@ -38,13 +31,8 @@ const RecipeCard: React.FC<RecipeCardProps> = ({ recipe, authUser }: RecipeCardP
     }
 
     const userUid = authUser.uid;
-
     const userFavoritesCollection = collection(favoriteRecipesCollection, userUid, 'favoriteRecipes');
-
-    const q = query(
-      userFavoritesCollection,
-      where("recipe.id", "==", recipe.id)
-    );
+    const q = query(userFavoritesCollection, where("recipe.id", "==", recipe.id));
     const querySnapshot = await getDocs(q);
 
     if (!querySnapshot.empty) {
@@ -74,7 +62,7 @@ const RecipeCard: React.FC<RecipeCardProps> = ({ recipe, authUser }: RecipeCardP
 
   useEffect(() => {
     checkIfFavorite(); // Check if the recipe is a favorite when the component mounts
-  }, []); // The empty dependency array ensures this effect only runs once
+  }, [authUser, recipe]); // Listen to changes in authUser and recipe to update favorite state
 
   return (
     <div className='recipe-card'>

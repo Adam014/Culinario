@@ -1,27 +1,45 @@
 import { useState, useEffect } from "react";
-import { onSnapshot, query, orderBy, where } from "firebase/firestore";
+import { query, orderBy, onSnapshot } from "firebase/firestore";
+import { collection, doc, getDoc } from "firebase/firestore";
 import { favoriteRecipesCollection } from "../firebase/firebase";
+import { Recipe } from "../components/services/allRecipes";
 
-export const getFavoriteRecipesData = (userUid: string | null) => {
-  const [favorites, setFavorites] = useState<any[]>([]); // Use 'any' for flexibility in storing recipe data
+export interface FavoriteRecipe {
+  id: string;
+  recipe: Recipe;
+}
+
+export const getFavoriteRecipesData = async (userUid: string | null) => {
+  const [favorites, setFavorites] = useState<FavoriteRecipe[]>([]);
 
   useEffect(() => {
-    if (userUid) {
-      const q = query(
-        favoriteRecipesCollection,
-        where("userUid", "==", userUid), // Filter by user's UID
-        orderBy("favoritedAt", "desc") // Sort by 'favoritedAt' in descending order
-      );
-      const unsub = onSnapshot(q, (snapshot) => {
-        const favoriteArray = snapshot.docs.map((doc) => ({
-          id: doc.data().recipe.id,
-          recipe: doc.data().recipe, // Retrieve the entire 'recipe' object
-        }));
-        setFavorites(favoriteArray);
-      });
-      return unsub;
-    }
+    const fetchFavoriteRecipes = async () => {
+      if (userUid) {
+        const userDocRef = doc(favoriteRecipesCollection, userUid);
+        const userDocSnapshot = await getDoc(userDocRef);
+
+        if (userDocSnapshot.exists()) {
+          const userFavoritesCollection = collection(userDocRef, "favoriteRecipes");
+          const q = query(userFavoritesCollection, orderBy("favoritedAt", "desc"));
+
+          const unsub = onSnapshot(q, (snapshot) => {
+            const favoriteArray: FavoriteRecipe[] = snapshot.docs.map((doc) => ({
+              id: doc.id,
+              recipe: doc.data().recipe as Recipe,
+            }));
+            setFavorites(favoriteArray);
+          });
+
+          return unsub;
+        } else {
+          setFavorites([]);
+        }
+      }
+    };
+
+    fetchFavoriteRecipes();
   }, [userUid]);
 
+  // Wrap the favorites array in an object
   return favorites;
 };

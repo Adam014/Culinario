@@ -14,16 +14,16 @@ const Favorites: React.FC<FavoritesProps> = ({ authUser, setAuthUser }: Favorite
   const userUid = authUser?.uid || null;
 
   const favorites = getFavoriteRecipesData(userUid);
-  // console.log(favorites)
+  console.log(favorites)
 
   return (
     <Layout authUser={authUser} setAuthUser={setAuthUser}>
       <main className="main">
         <h1>Your Favorite Recipes</h1>
         <div className='recipe-card-container'>
-          {favorites.map((favoriteRecipe) => (
+          {/* {favorites.map((favoriteRecipe) => (
             <RecipeCard key={favoriteRecipe.id} recipe={favoriteRecipe.recipe} authUser={authUser}/>
-          ))}
+          ))} */}
         </div>
       </main>
     </Layout>
