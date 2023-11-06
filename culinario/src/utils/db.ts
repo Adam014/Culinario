@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { query, orderBy, onSnapshot } from "firebase/firestore";
+import { onSnapshot, query, orderBy } from "firebase/firestore";
 import { collection, doc, getDoc } from "firebase/firestore";
 import { favoriteRecipesCollection } from "../firebase/firebase";
 import { Recipe } from "../components/services/allRecipes";
@@ -40,6 +40,5 @@ export const getFavoriteRecipesData = async (userUid: string | null) => {
     fetchFavoriteRecipes();
   }, [userUid]);
 
-  // Wrap the favorites array in an object
   return favorites;
 };

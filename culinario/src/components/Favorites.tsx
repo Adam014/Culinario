@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import Layout from "./Layout/Layout";
 import { User } from "firebase/auth";
 import RecipeCard from './services/recipeCard';
@@ -13,17 +14,15 @@ const Favorites: React.FC<FavoritesProps> = ({ authUser, setAuthUser }: Favorite
   // Get the favorite recipes data
   const userUid = authUser?.uid || null;
 
-  const favorites = getFavoriteRecipesData(userUid);
-  console.log(favorites)
+  const favoritesArray = getFavoriteRecipesData(userUid);
+  console.log(favoritesArray)
 
   return (
     <Layout authUser={authUser} setAuthUser={setAuthUser}>
       <main className="main">
         <h1>Your Favorite Recipes</h1>
         <div className='recipe-card-container'>
-          {/* {favorites.map((favoriteRecipe) => (
-            <RecipeCard key={favoriteRecipe.id} recipe={favoriteRecipe.recipe} authUser={authUser}/>
-          ))} */}
+          {/* mapping here */}
         </div>
       </main>
     </Layout>
