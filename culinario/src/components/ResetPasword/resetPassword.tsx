@@ -33,7 +33,7 @@ const ResetPassword = () => {
                 <h1>Reset Password</h1>
                 <div className="email">
                     <form className="forgot-form" onSubmit={handleSubmit}>
-                        <label>Enter the email for the password reset link<br />
+                        <label>Enter the email for the password reset link<br /><br />
                             <input
                                 type="email"
                                 placeholder="Enter your email"
