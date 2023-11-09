@@ -17,6 +17,14 @@ body
     font-family: 'Comfortaa', cursive
     display: flex
     flex-direction: column
+    content: ""
+    background-image: url("./images/grid.svg")
+    z-index: 1
+    position: absolute
+    width: 100%
+    height: 100%
+    top: 0
+    opacity: 1
 
 .container
     height: 100%
@@ -283,9 +291,13 @@ input[type="password"]
 // reset password
 
 .reset-password-container
-    padding: 50px
+    display: flex
+    justify-content: center
+    align-items: center
+    height: 100%    
     .back-button
         padding-bottom: 15px
+        z-index: 999
     h1
         font-size: 3rem
         padding-bottom: 20px

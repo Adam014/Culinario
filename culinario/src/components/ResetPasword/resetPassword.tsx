@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 const ResetPassword = () => {
     const [email, setEmail] = useState(""); // State to store the email
-const [error, setError] = useState<Error | null>(null);
+    const [error, setError] = useState<Error | null>(null);
     const redirect = useNavigate();
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -26,24 +26,26 @@ const [error, setError] = useState<Error | null>(null);
 
     return (
         <div className="reset-password-container">
-            <div className="back-button">
-                <button className="button" onClick={handleBack}>Get Back</button>
+            <div className="reset-container">
+                <div className="back-button">
+                    <button className="button" onClick={handleBack}>Get Back 🡨</button>
+                </div>
+                <h1>Reset Password</h1>
+                <div className="email">
+                    <form className="forgot-form" onSubmit={handleSubmit}>
+                        <label>Enter the email for the password reset link<br />
+                            <input
+                                type="email"
+                                placeholder="Enter your email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                            />
+                        </label><br />
+                        <button className="button">Get link</button>
+                    </form>
+                </div>
+                {error && <div>{error.message}</div>}
             </div>
-            <h1>Reset Password</h1>
-            <div className="email">
-                <form className="forgot-form" onSubmit={handleSubmit}>
-                    <label>Enter email for password reset link<br />
-                        <input
-                            type="email"
-                            placeholder="Enter your email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                        />
-                    </label><br />
-                    <button className="button">Get link</button>
-                </form>
-            </div>
-            {error && <div>{error.message}</div>}
         </div>
     );
 };

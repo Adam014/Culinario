@@ -11,6 +11,7 @@ import GitHub from "./github.png";
 import Fb from "./fb.png";
 import ThumbsUp from "./thumbsup.png";
 import Time from "./time.png";
+import Grid from "./grid.svg";
 
 export {
     CulinarioLogo,
@@ -26,4 +27,5 @@ export {
     Fb,
     ThumbsUp,
     Time,
+    Grid,
 };
