@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import { onSnapshot, query, orderBy } from "firebase/firestore";
-import { collection, doc, getDoc } from "firebase/firestore";
 import { favoriteRecipesCollection } from "../firebase/firebase";
+import { addDoc, getDocs, collection, query, where, onSnapshot, doc, getDoc, orderBy } from "firebase/firestore";
+import { allRecipes } from "../firebase/firebase";
 import { Recipe } from "../components/services/allRecipes";
 
 export interface FavoriteRecipe {
@@ -41,4 +41,11 @@ export const getFavoriteRecipesData = async (userUid: string | null) => {
   }, [userUid]);
 
   return favorites;
+};
+
+// create here the function
+
+// Function to save recipes to the allRecipes collection
+export const saveRecipeToCollection = async (recipe: Recipe) => {
+
 };

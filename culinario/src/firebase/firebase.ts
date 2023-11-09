@@ -23,3 +23,4 @@ export const providerGitHub = new GithubAuthProvider();
 
 // exporting variables for collections
 export const favoriteRecipesCollection = collection(db, "favoriteRecipes");
+export const allRecipes = collection(db, "AllRecipes");
