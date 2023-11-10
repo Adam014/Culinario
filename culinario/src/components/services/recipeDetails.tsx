@@ -15,7 +15,7 @@ const recipeDetails: React.FC<RecipeDetailsProps> = ({ authUser, setAuthUser }) 
 
     return (
         <Layout authUser={authUser} setAuthUser={setAuthUser}>
-            
+            <div>Single Recipe</div>
         </Layout>
     )
 }

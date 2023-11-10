@@ -4,6 +4,7 @@ import { ProfileIcon } from "../images/images";
 import { useNavigate } from "react-router-dom";
 import Layout from "./Layout/Layout";
 import { getProfileInfo } from './auth/authUtils';
+import { formatDateTime } from "../utils/db";
 
 // passing throught props and defining its types
 interface ProfileProps {
@@ -22,31 +23,8 @@ const profile: React.FC<ProfileProps> = ({ authUser , setAuthUser } : ProfilePro
     }, 2000);
   }, []);
 
-  const createdAt = authUser?.metadata?.creationTime
-    ? new Date(authUser.metadata.creationTime).toLocaleString("cz-CZ", {
-        timeZone: "Europe/Prague",
-        weekday: "short",
-        year: "numeric",
-        month: "short",
-        day: "numeric",
-        hour: "numeric",
-        minute: "numeric",
-        second: "numeric",
-      })
-    : "N/A";
-
-  const lastSignInTime = authUser?.metadata?.lastSignInTime
-    ? new Date(authUser.metadata.lastSignInTime).toLocaleString("cz-CZ", {
-        timeZone: "Europe/Prague",
-        weekday: "short",
-        year: "numeric",
-        month: "short",
-        day: "numeric",
-        hour: "numeric",
-        minute: "numeric",
-        second: "numeric",
-      })
-    : "N/A";
+  const createdAt = formatDateTime(authUser?.metadata?.creationTime);
+  const lastSignInTime = formatDateTime(authUser?.metadata?.lastSignInTime);
 
   const handleReset = () => redirect("/reset-password");
 

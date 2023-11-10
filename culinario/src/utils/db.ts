@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { favoriteRecipesCollection } from "../firebase/firebase";
-import { addDoc, getDocs, collection, query, where, onSnapshot, doc, getDoc, orderBy } from "firebase/firestore";
-import { allRecipes } from "../firebase/firebase";
+import { collection, query, onSnapshot, doc, getDoc, orderBy } from "firebase/firestore";
+// import { allRecipes } from "../firebase/firebase";
 import { Recipe } from "../components/services/allRecipes";
 
 export interface FavoriteRecipe {
@@ -46,6 +46,25 @@ export const getFavoriteRecipesData = async (userUid: string | null) => {
 // create here the function
 
 // Function to save recipes to the allRecipes collection
-export const saveRecipeToCollection = async (recipe: Recipe) => {
+// export const saveRecipeToCollection = async (recipe: Recipe) => {
 
+// };
+
+// Function for to load the allRecipes collection and save them to a array
+
+
+// function for formatting time to CZ time
+export const formatDateTime = (dateTime: string | undefined): string => {
+  return dateTime
+    ? new Date(dateTime).toLocaleString("cz-CZ", {
+        timeZone: "Europe/Prague",
+        weekday: "short",
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+        hour: "numeric",
+        minute: "numeric",
+        second: "numeric",
+      })
+    : "N/A";
 };
