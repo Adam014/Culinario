@@ -1,13 +1,13 @@
 import React from "react";
 import Layout from '../Layout/Layout';
 import { User } from 'firebase/auth';
-import { Recipe } from "./allRecipes";
+// import { Recipe } from "./allRecipes";
 import { useParams } from "react-router-dom";
 
 interface RecipeDetailsProps {
     authUser: User | null; 
     setAuthUser: React.Dispatch<React.SetStateAction<User | null>>;
-    recipe: Recipe;
+    // recipe: Recipe[];
   }
 
 const recipeDetails: React.FC<RecipeDetailsProps> = ({ authUser, setAuthUser }) => {

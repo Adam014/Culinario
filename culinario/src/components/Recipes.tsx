@@ -13,7 +13,7 @@ const Recipes: React.FC<RecipesProps> = ({ authUser, setAuthUser } : RecipesProp
     <Layout authUser={authUser} setAuthUser={setAuthUser}>
         <main className="main">
             <h1>All Recipes</h1>
-            <AllRecipes simplified={false} authUser={authUser}/>
+            <AllRecipes simplified={false} authUser={authUser} setAuthUser={setAuthUser}/>
         </main>
     </Layout>
   )
