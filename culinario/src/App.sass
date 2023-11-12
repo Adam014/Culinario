@@ -378,8 +378,6 @@ input[type="password"]
             height: 12rem
         .title-user-info
             padding-left: 30px
-            h2
-                width: 30rem
             p
                 opacity: 0.8
                 padding-top: 5px
@@ -591,8 +589,9 @@ input[type="password"]
         display: none
         position: fixed
         height: 100%
-        width: 12rem
+        width: 15rem
         z-index: 998
+        transition: 0.4s ease-in-out
         &.visible
             display: block
     .recipes-page-container
@@ -621,9 +620,29 @@ input[type="password"]
         display: block
         position: fixed
         z-index: 999
-        transform: rotate(90deg)
-        left: -9%
+        left: 0%
         top: 20%
+        appearance: none
+        height: 10rem
+        outline: 0
+        background-color: $gold
+        margin: 0
+        border-radius: 0 8px 8px 0
+        border: 0
+        padding: 0
+        &::before
+            content: "sidebar"
+            transform: rotate(90deg)
+            width: 1.7rem
+            height: 15px
+            color: white
+            display: flex
+            justify-content: center
+            text-transform: uppercase
+            font-family: 'Comfortaa', cursive
+            letter-spacing: 3px
+        &.active
+            left: 56%
 
 @media (max-width: 700px)
     .default-user-info

@@ -44,8 +44,7 @@ const Layout: React.FC<LayoutProps> = ({children, authUser, setAuthUser,}: Layou
           handleTabClick={handleTabClick}
           visible={sidebarVisible}
         />
-        <button onClick={toggleSidebar} className="toggle-sidebar-button">
-          Toggle Sidebar
+        <button onClick={toggleSidebar} className={`toggle-sidebar-button ${sidebarVisible ? "active" : ""}`}>
         </button>
         {children}
       </div>
