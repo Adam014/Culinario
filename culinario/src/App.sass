@@ -223,11 +223,13 @@ input[type="password"]
         background: transparent
         cursor: pointer
 
+
 .aside
     grid-area: aside
     background-color: $formBg
     width: 90%
     min-height: 68vw
+    z-index: 999
 
     .aside-container
         justify-content: center
@@ -581,9 +583,15 @@ input[type="password"]
 .profile
     @extend .main
 
+.toggle-sidebar-button
+    display: none
+
 @media (max-width: 1000px)
     .aside  
         display: none
+        position: fixed
+        height: 100%
+        width: 40%
     .recipes-page-container
         grid-template-areas: "navbar navbar navbar" "main main main" "main main main"
     .showing-sidebar-btn
@@ -605,7 +613,10 @@ input[type="password"]
             font-size: 2vw
     .footer-container
         p
-            text-align: center
+            text-align: center  
+    .toggle-sidebar-button
+        display: block
+        position: absolute
 
 @media (max-width: 700px)
     .default-user-info

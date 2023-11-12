@@ -11,9 +11,10 @@ interface SidebarProps {
     setActiveTab: (tabName: string) => void;
     activeTab: string;
     handleTabClick: (tabName: string) => void;
+    visible: boolean;
 }
   
-const sidebar: React.FC<SidebarProps> = ({ setAuthUser, setActiveTab, activeTab, handleTabClick } : SidebarProps) => {
+const sidebar: React.FC<SidebarProps> = ({ setAuthUser, setActiveTab, activeTab, handleTabClick, visible } : SidebarProps) => {
     const redirect = useNavigate();
 
     // getting from localStorage the activeTab
@@ -39,7 +40,7 @@ const sidebar: React.FC<SidebarProps> = ({ setAuthUser, setActiveTab, activeTab,
     }
 
     return (
-    <aside className="aside">
+    <aside className={`aside ${visible ? "visible" : ""}`}>
       <div className="aside-container">
         <h4>Discover</h4> 
         {/* Link to homePage */}
