@@ -230,6 +230,8 @@ input[type="password"]
     width: 90%
     min-height: 68vw
     z-index: 998
+    left: -15rem
+    position: fixed
 
     .aside-container
         justify-content: center
@@ -594,6 +596,7 @@ input[type="password"]
         transition: 0.4s ease-in-out
         &.visible
             display: block
+            left: 0rem
     .recipes-page-container
         grid-template-areas: "navbar navbar navbar" "main main main" "main main main"
     .showing-sidebar-btn
@@ -620,7 +623,7 @@ input[type="password"]
         display: block
         position: fixed
         z-index: 999
-        left: 0%
+        left: 0rem
         top: 20%
         appearance: none
         height: 10rem
@@ -642,7 +645,7 @@ input[type="password"]
             font-family: 'Comfortaa', cursive
             letter-spacing: 3px
         &.active
-            left: 56%
+            left: 14.5rem
 
 @media (max-width: 700px)
     .default-user-info

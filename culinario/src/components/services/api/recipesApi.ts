@@ -2,8 +2,6 @@
 
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { API_KEY, API_HOST, API_BASE_URL } from './apiConfig';
-import { saveRecipeToCollection } from '../../../utils/db';
-import { Recipe } from '../allRecipes';
 
 const tastyApiHeader = {
   'X-RapidAPI-Key': API_KEY,
