@@ -48,7 +48,7 @@ const Layout: React.FC<LayoutProps> = ({children, authUser, setAuthUser,}: Layou
         <button onClick={toggleSidebar} className={`toggle-sidebar-button ${sidebarVisible ? "active" : ""}`}>
         </button>
         {children}
-        <ScrollToTop smooth />
+        <ScrollToTop smooth className="scroll-to-top"/>
       </div>
     );
 };
