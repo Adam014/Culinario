@@ -36,7 +36,7 @@ const App = () => {
 
   return (
     <Router>
-        <AnimatedCursor color='241, 135, 6'/>
+        <AnimatedCursor color='241, 135, 6' />
         <Routes>
           <Route path="/" element={authUser ? <Home authUser={authUser} setAuthUser={setAuthUser} /> : <AuthDetails setAuthUser={setAuthUser} authUser={authUser}/>} />
           <Route path="/profile" element={<Profile authUser={authUser} setAuthUser={setAuthUser} />} />

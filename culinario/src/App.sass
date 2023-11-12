@@ -229,7 +229,7 @@ input[type="password"]
     background-color: $formBg
     width: 90%
     min-height: 68vw
-    z-index: 999
+    z-index: 998
 
     .aside-container
         justify-content: center
@@ -591,7 +591,10 @@ input[type="password"]
         display: none
         position: fixed
         height: 100%
-        width: 40%
+        width: 12rem
+        z-index: 998
+        &.visible
+            display: block
     .recipes-page-container
         grid-template-areas: "navbar navbar navbar" "main main main" "main main main"
     .showing-sidebar-btn
@@ -617,6 +620,7 @@ input[type="password"]
     .toggle-sidebar-button
         display: block
         position: absolute
+        z-index: 999
 
 @media (max-width: 700px)
     .default-user-info
