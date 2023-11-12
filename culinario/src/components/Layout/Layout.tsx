@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
 import { User } from "firebase/auth";
+import ScrollToTop from "react-scroll-to-top";
 
 // passing throught props and defining its types
 interface LayoutProps {
@@ -47,6 +48,7 @@ const Layout: React.FC<LayoutProps> = ({children, authUser, setAuthUser,}: Layou
         <button onClick={toggleSidebar} className={`toggle-sidebar-button ${sidebarVisible ? "active" : ""}`}>
         </button>
         {children}
+        <ScrollToTop smooth />
       </div>
     );
 };
