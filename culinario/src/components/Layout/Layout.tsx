@@ -49,7 +49,7 @@ const Layout: React.FC<LayoutProps> = ({children, authUser, setAuthUser,}: Layou
         <button onClick={toggleSidebar} className={`toggle-sidebar-button ${sidebarVisible ? "active" : ""}`}>
         </button>
         <div className="github-btn">
-          <GitHubButton href="https://github.com/Adam014/Nomadify" data-size="large" data-show-count="true">Star this on Github</GitHubButton>
+          <GitHubButton href="https://github.com/Adam014/Culinario" data-size="large" data-show-count="true">Star this on Github</GitHubButton>
         </div>
         {children}
         <ScrollToTop smooth className="scroll-to-top"/>
