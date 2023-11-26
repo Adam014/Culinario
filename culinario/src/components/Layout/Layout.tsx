@@ -4,6 +4,7 @@ import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
 import { User } from "firebase/auth";
 import ScrollToTop from "react-scroll-to-top";
+import GitHubButton from "react-github-btn";
 
 // passing throught props and defining its types
 interface LayoutProps {
@@ -47,6 +48,9 @@ const Layout: React.FC<LayoutProps> = ({children, authUser, setAuthUser,}: Layou
         />
         <button onClick={toggleSidebar} className={`toggle-sidebar-button ${sidebarVisible ? "active" : ""}`}>
         </button>
+        <div className="github-btn">
+          <GitHubButton href="https://github.com/Adam014/Nomadify" data-size="large" data-show-count="true">Star this on Github</GitHubButton>
+        </div>
         {children}
         <ScrollToTop smooth className="scroll-to-top"/>
       </div>
